@@ -1,6 +1,6 @@
 # Luuna Missions
 
-Git-native tickets and structured work plans. This is Luuna's maintained MIT-licensed fork of Seeds, imported from upstream version **0.6.0**. The Luuna package identity is **@luuna/missions-cli** in the independent public repository [brodynelly/luuna-missions](https://github.com/brodynelly/luuna-missions). The package remains private and unpublished.
+Git-native tickets and structured work plans. This is Luuna's maintained MIT-licensed fork of Seeds, imported from upstream version **0.6.0**. The Luuna package identity is **@luuna/missions-cli** in the independent public repository [luuna-ai/luuna-missions](https://github.com/luuna-ai/luuna-missions). The package remains private and unpublished.
 
 ## Run from a checkout
 
@@ -28,7 +28,7 @@ Project discovery walks upward from the working directory. A legacy `.seeds/` di
 
 The runtime is in `cmd/` and `internal/`. `src/index-legacy.ts` and the TypeScript modules under `src/` remain as the compatibility oracle for the differential test corpus. `bun run verify` runs the TypeScript type check, instruction check, Bun tests, Go tests, and Go-versus-TypeScript CLI parity cases. CI declares this surface on Linux and Windows using Bun 1.4.3 and the Go version in `go.mod`. See [AGENTS.md](AGENTS.md) for repository rules and [the system map](docs/CLI-SYSTEM-MAP.md) for validation limits.
 
-The repository owner and release maintainer is `brodynelly`. Registry publishing is disabled and requires no npm token. Luuna pins a reviewed commit, never a floating branch; update its submodule only after CI and a consumer smoke pass. Read [UPSTREAM.md](UPSTREAM.md) for provenance and [the original README](docs/UPSTREAM-README.md) for inherited command examples. Upstream release/runbook documents are historical references and do not authorize publication.
+The repository is maintained by the luuna-ai organization. Registry publishing is disabled and requires no npm token. Luuna pins a reviewed commit, never a floating branch; update its submodule only after CI and a consumer smoke pass. Read [UPSTREAM.md](UPSTREAM.md) for provenance and [the original README](docs/UPSTREAM-README.md) for inherited command examples. Upstream release/runbook documents are historical references and do not authorize publication.
 
 ## Origin and attribution
 
