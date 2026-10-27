@@ -6,7 +6,7 @@ Scoped from `luuna-ai-os/specs/feature-native-cli-distribution.md`, task **C-mis
 
 - Add `scripts/release/package.sh`:
   - takes `--version V --out DIR [--os darwin|linux] [--arch arm64|amd64]`
-  - builds `./cmd/luuna-missions` with `CGO_ENABLED=0 -trimpath -buildvcs=false -ldflags "-s -w -X github.com/brodynelly/luuna-missions/internal/cli.CurrentVersion=<package.json version>"`
+  - builds `./cmd/luuna-missions` with `CGO_ENABLED=0 -trimpath -buildvcs=false -ldflags "-s -w -X github.com/luuna-ai/luuna-missions/internal/cli.CurrentVersion=<package.json version>"`
   - copies the binary as `lms`
   - writes a deterministic `luuna-missions_<V>_<os>_<arch>.tar.gz` with exactly `bin/luuna-missions` and `bin/lms` (0755, 0:0, no directory entry)
   - writes `SHA256SUMS`, `provenance.json`, `LICENSE` and `UPSTREAM.md`

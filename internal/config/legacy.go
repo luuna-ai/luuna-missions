@@ -10,7 +10,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/brodynelly/luuna-missions/internal/model"
+	"github.com/luuna-ai/luuna-missions/internal/model"
 )
 
 const legacyDir = ".seeds"

@@ -22,7 +22,7 @@ function onboardSnippet(): string {
 ${VERSION_MARKER}
 ${SCHEMA_MARKER}
 
-This project uses [Missions](https://github.com/brodynelly/luuna-missions) v${VERSION} (\`lm\`) for git-native issue tracking. Run \`luuna-missions prime\` at session start for the workflow and live state (in-progress and ready issues), or run \`luuna-missions setup claude\` once to do it automatically.
+This project uses [Missions](https://github.com/luuna-ai/luuna-missions) v${VERSION} (\`lm\`) for git-native issue tracking. Run \`luuna-missions prime\` at session start for the workflow and live state (in-progress and ready issues), or run \`luuna-missions setup claude\` once to do it automatically.
 
 - \`luuna-missions ready\` — Find unblocked work
 - \`luuna-missions update <id> --claim\` — Claim work (atomic)

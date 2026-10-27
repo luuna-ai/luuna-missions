@@ -6,8 +6,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/brodynelly/luuna-missions/internal/model"
-	"github.com/brodynelly/luuna-missions/internal/store"
+	"github.com/luuna-ai/luuna-missions/internal/model"
+	"github.com/luuna-ai/luuna-missions/internal/store"
 )
 
 // Atlas is an optional best-effort source for prior art. Failed subprocesses

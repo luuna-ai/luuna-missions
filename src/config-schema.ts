@@ -25,7 +25,7 @@ function templateExample(t: PlanTemplate): Record<string, unknown> {
 export function configSchema(): JSONSchema {
 	return {
 		$schema: "https://json-schema.org/draft/2020-12/schema",
-		$id: "https://github.com/brodynelly/luuna-missions/config.schema.json",
+		$id: "https://github.com/luuna-ai/luuna-missions/config.schema.json",
 		title: "Missions project config",
 		description:
 			"Schema for .luuna/missions/config.yaml. Consumed by schema-driven configuration UIs; emit via `luuna-missions config schema`.",

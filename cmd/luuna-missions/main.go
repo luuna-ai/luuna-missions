@@ -3,8 +3,8 @@ package main
 import (
 	"os"
 
-	"github.com/brodynelly/luuna-missions/internal/cli"
-	"github.com/brodynelly/luuna-missions/internal/plan"
+	"github.com/luuna-ai/luuna-missions/internal/cli"
+	"github.com/luuna-ai/luuna-missions/internal/plan"
 )
 
 func main() {

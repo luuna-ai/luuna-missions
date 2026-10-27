@@ -64,7 +64,7 @@ Always run all three before submitting a PR.
 
 ## Reporting Issues
 
-Use [GitHub Issues](https://github.com/brodynelly/luuna-missions/issues) for bug reports and feature requests. For security vulnerabilities, see [SECURITY.md](SECURITY.md).
+Use [GitHub Issues](https://github.com/luuna-ai/luuna-missions/issues) for bug reports and feature requests. For security vulnerabilities, see [SECURITY.md](SECURITY.md).
 
 ## License
 

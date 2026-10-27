@@ -1,4 +1,4 @@
-module github.com/brodynelly/luuna-missions
+module github.com/luuna-ai/luuna-missions
 
 go 1.22
 

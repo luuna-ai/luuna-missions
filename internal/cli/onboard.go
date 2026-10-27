@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/brodynelly/luuna-missions/internal/config"
+	"github.com/luuna-ai/luuna-missions/internal/config"
 )
 
 const onboardStart = "<!-- missions:start -->"
@@ -18,7 +18,7 @@ func onboardSnippet(version string) string {
 <!-- missions-onboard:v%s -->
 %s
 
-This project uses [Missions](https://github.com/brodynelly/luuna-missions) v%s (~lm~) for git-native issue tracking. Run ~luuna-missions prime~ at session start for the workflow and live state (in-progress and ready issues), or run ~luuna-missions setup claude~ once to do it automatically.
+This project uses [Missions](https://github.com/luuna-ai/luuna-missions) v%s (~lm~) for git-native issue tracking. Run ~luuna-missions prime~ at session start for the workflow and live state (in-progress and ready issues), or run ~luuna-missions setup claude~ once to do it automatically.
 
 - ~luuna-missions ready~ — Find unblocked work
 - ~luuna-missions update <id> --claim~ — Claim work (atomic)

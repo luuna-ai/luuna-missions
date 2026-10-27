@@ -10,7 +10,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/brodynelly/luuna-missions/internal/config"
+	"github.com/luuna-ai/luuna-missions/internal/config"
 )
 
 var missionsHookPattern = regexp.MustCompile(`^\s*(?:luuna-missions|lm|sd|seeds)\s+(?:prime|guard)(?:\s|$)`)

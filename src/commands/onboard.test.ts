@@ -167,7 +167,7 @@ describe("luuna-missions onboard", () => {
 		const content = await Bun.file(join(tmpDir, "CLAUDE.md")).text();
 		expect(content).toContain(`<!-- missions-onboard:v${VERSION} -->`);
 		expect(content).toContain(
-			`Missions](https://github.com/brodynelly/luuna-missions) v${VERSION}`,
+			`Missions](https://github.com/luuna-ai/luuna-missions) v${VERSION}`,
 		);
 	});
 

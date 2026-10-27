@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/brodynelly/luuna-missions/internal/model"
+	"github.com/luuna-ai/luuna-missions/internal/model"
 )
 
 func TestReadUsesLastIDAndSkipsMalformedLine(t *testing.T) {

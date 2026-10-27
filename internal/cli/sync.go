@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/brodynelly/luuna-missions/internal/config"
+	"github.com/luuna-ai/luuna-missions/internal/config"
 )
 
 func gitCapture(root string, args ...string) (string, string, error) {

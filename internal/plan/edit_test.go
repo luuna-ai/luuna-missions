@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/brodynelly/luuna-missions/internal/cli"
-	"github.com/brodynelly/luuna-missions/internal/store"
+	"github.com/luuna-ai/luuna-missions/internal/cli"
+	"github.com/luuna-ai/luuna-missions/internal/store"
 )
 
 func runEditFixture(t *testing.T, root string, args ...string) (int, string, string) {

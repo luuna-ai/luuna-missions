@@ -15,7 +15,7 @@ record see `SPEC.md`. This is a procedural document — read it as
 - `bun --version` ≥ the `engines.bun` floor in `package.json` (≥ 1.0).
 - `gh auth status` → authenticated, with `repo` + `workflow` scopes.
 - `git remote -v` shows the canonical origin
-  (`github.com/brodynelly/luuna-missions`).
+  (`github.com/luuna-ai/luuna-missions`).
 - `npm whoami` → `jayminwest`, with 2FA enabled, if you ever need a
   manual publish.
 - Local tree on `main`, fully up to date, `git status` clean.

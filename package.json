@@ -32,13 +32,13 @@
   ],
   "author": "Jaymin West",
   "license": "MIT",
-  "homepage": "https://github.com/brodynelly/luuna-missions",
+  "homepage": "https://github.com/luuna-ai/luuna-missions",
   "bugs": {
-    "url": "https://github.com/brodynelly/luuna-missions/issues"
+    "url": "https://github.com/luuna-ai/luuna-missions/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/brodynelly/luuna-missions.git"
+    "url": "https://github.com/luuna-ai/luuna-missions.git"
   },
   "scripts": {
     "build:native": "bun scripts/native-build.ts",
