@@ -8,10 +8,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/brodynelly/luuna-missions/internal/cli"
-	"github.com/brodynelly/luuna-missions/internal/config"
-	"github.com/brodynelly/luuna-missions/internal/model"
-	"github.com/brodynelly/luuna-missions/internal/store"
+	"github.com/luuna-ai/luuna-missions/internal/cli"
+	"github.com/luuna-ai/luuna-missions/internal/config"
+	"github.com/luuna-ai/luuna-missions/internal/model"
+	"github.com/luuna-ai/luuna-missions/internal/store"
 )
 
 const topHelp = "Usage: luuna-missions plan [options] [command]\n\nPlan management\n\nOptions:\n  -h, --help                                 display help for command\n\nCommands:\n  templates [options]                        List available plan templates\n  prompt [options] <seed-id>                 Emit structured planning prompt JSON for a seed\n  submit [options] <seed-id>                 Validate a plan, spawn children, write plans.jsonl row\n  show [options] <id>                        Show a plan with sections, children, and status (accepts plan id or seed id)\n  validate [options] <id>                    Re-run validation against the current template definition (accepts plan id or seed id)\n  outcome [options] <id>                     Record a plan outcome (storage-only; not a state transition; accepts plan id or seed id)\n  review [options] <id>                      Record a reviewer (informational; not a state transition; accepts plan id or seed id)\n  edit [options] <id>                        Edit plan fields in place (accepts plan id or seed id); bumps revision\n  create [options] <seed-id>                 Create an adopt-only plan with zero spawned children (populate via 'luuna-missions plan adopt')\n  adopt [options] <plan-id> <seed-ids...>    Adopt existing open missions into a plan (link-only; bumps plan revision)\n  reorder [options] <plan-id> <seed-ids...>  Set the exact order of plan.children (must be a permutation of current children)\n  release [options] <plan-id> <seed-ids...>  Release missions from a plan (link-only; missions stay open; bumps plan revision)\n  list [options]                             List plans with optional filters\n"

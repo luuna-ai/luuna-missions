@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/brodynelly/luuna-missions/internal/model"
+	"github.com/luuna-ai/luuna-missions/internal/model"
 )
 
 func TestConfigTreeSchemaAndOrder(t *testing.T) {

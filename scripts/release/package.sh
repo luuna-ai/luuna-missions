@@ -130,7 +130,7 @@ command -v "$go_bin" >/dev/null 2>&1 || die "go not found (set LUUNA_MISSIONS_GO
 # version is recorded separately in the file name and provenance.json.
 internal_version=$(sed -n 's/^[[:space:]]*"version":[[:space:]]*"\([^"]*\)".*/\1/p' "$root/package.json" | head -n 1)
 valid_version "$internal_version" || die "cannot read internal version from package.json" 1
-version_symbol=github.com/brodynelly/luuna-missions/internal/cli.CurrentVersion
+version_symbol=github.com/luuna-ai/luuna-missions/internal/cli.CurrentVersion
 ldflags="-s -w -X $version_symbol=$internal_version"
 
 archive="luuna-missions_${version}_${target_os}_${target_arch}.tar.gz"
@@ -206,7 +206,7 @@ fi
 ref=${GITHUB_REF:-$git_ref}
 run_id=null
 [ -z "${GITHUB_RUN_ID:-}" ] || run_id="\"$(json_escape "$GITHUB_RUN_ID")\""
-repo=${GITHUB_REPOSITORY:-brodynelly/luuna-missions}
+repo=${GITHUB_REPOSITORY:-luuna-ai/luuna-missions}
 
 cat >"$out/provenance.json" <<EOF
 {

@@ -5,9 +5,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/brodynelly/luuna-missions/internal/cli"
-	"github.com/brodynelly/luuna-missions/internal/model"
-	"github.com/brodynelly/luuna-missions/internal/store"
+	"github.com/luuna-ai/luuna-missions/internal/cli"
+	"github.com/luuna-ai/luuna-missions/internal/model"
+	"github.com/luuna-ai/luuna-missions/internal/store"
 )
 
 func positiveFlag(value, name string) (int, error) {

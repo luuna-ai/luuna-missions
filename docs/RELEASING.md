@@ -17,7 +17,7 @@ These files sit next to the archive:
 - `SHA256SUMS` lists the archive, `provenance.json`, `LICENSE` and `UPSTREAM.md`.
 - `provenance.json` is self-reported metadata. It records repository, commit, ref, `source_tree_dirty` (source-tree dirtiness, including untracked non-ignored files; `null` when unknown), workflow run id, runner, Go version, build env/flags/ldflags, the archive SHA256, and two separate versions:
   - `archive_version`: the `--version` you pass, used in the file name.
-  - `internal_version`: the version the binary prints for `--version`. It comes from `package.json`, today the `0.6.0` upstream compatibility baseline, and is injected through the existing symbol `github.com/brodynelly/luuna-missions/internal/cli.CurrentVersion`, the same one `scripts/native-build.ts` sets.
+  - `internal_version`: the version the binary prints for `--version`. It comes from `package.json`, today the `0.6.0` upstream compatibility baseline, and is injected through the existing symbol `github.com/luuna-ai/luuna-missions/internal/cli.CurrentVersion`, the same one `scripts/native-build.ts` sets.
 
   Outside a Git work tree, `commit`, `ref` (unless `GITHUB_REF` is set) and `source_tree_dirty` are JSON `null`; an unknown Go version is also `null`. `provenance.json` is not an attestation.
 

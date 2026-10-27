@@ -43,7 +43,7 @@ export function ensureNativeBinary(): string {
 	const goArch = process.arch === "x64" ? "amd64" : process.arch === "ia32" ? "386" : process.arch;
 	try {
 		const result = Bun.spawnSync(
-			[go, "build", "-trimpath", "-ldflags", `-X github.com/brodynelly/luuna-missions/internal/cli.CurrentVersion=${sourceVersion()}`, "-o", temporary, "./cmd/luuna-missions"],
+			[go, "build", "-trimpath", "-ldflags", `-X github.com/luuna-ai/luuna-missions/internal/cli.CurrentVersion=${sourceVersion()}`, "-o", temporary, "./cmd/luuna-missions"],
 			{ cwd: root, stdout: "pipe", stderr: "pipe", env: { ...process.env, GOOS: goOS, GOARCH: goArch } },
 		);
 		if (result.exitCode !== 0) {

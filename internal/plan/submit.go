@@ -14,10 +14,10 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/brodynelly/luuna-missions/internal/cli"
-	"github.com/brodynelly/luuna-missions/internal/config"
-	"github.com/brodynelly/luuna-missions/internal/model"
-	"github.com/brodynelly/luuna-missions/internal/store"
+	"github.com/luuna-ai/luuna-missions/internal/cli"
+	"github.com/luuna-ai/luuna-missions/internal/config"
+	"github.com/luuna-ai/luuna-missions/internal/model"
+	"github.com/luuna-ai/luuna-missions/internal/store"
 )
 
 type submittedStep struct {

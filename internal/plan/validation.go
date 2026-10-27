@@ -8,7 +8,7 @@ import (
 	"strings"
 	"unicode/utf16"
 
-	"github.com/brodynelly/luuna-missions/internal/model"
+	"github.com/luuna-ai/luuna-missions/internal/model"
 )
 
 // ErrorEntry and Diff are the public partial-state validation contract used by

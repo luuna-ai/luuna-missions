@@ -1,8 +1,8 @@
 package plan
 
 import (
-	"github.com/brodynelly/luuna-missions/internal/model"
-	"github.com/brodynelly/luuna-missions/internal/store"
+	"github.com/luuna-ai/luuna-missions/internal/model"
+	"github.com/luuna-ai/luuna-missions/internal/store"
 )
 
 // ApplyTransitions mirrors src/plan-lifecycle.ts. Its caller holds the plans

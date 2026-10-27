@@ -9,9 +9,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/brodynelly/luuna-missions/internal/config"
-	"github.com/brodynelly/luuna-missions/internal/model"
-	"github.com/brodynelly/luuna-missions/internal/store"
+	"github.com/luuna-ai/luuna-missions/internal/config"
+	"github.com/luuna-ai/luuna-missions/internal/model"
+	"github.com/luuna-ai/luuna-missions/internal/store"
 )
 
 var issueFormats = []string{"markdown", "compact", "plain", "ids", "json"}

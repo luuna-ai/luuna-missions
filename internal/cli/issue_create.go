@@ -9,9 +9,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/brodynelly/luuna-missions/internal/config"
-	"github.com/brodynelly/luuna-missions/internal/model"
-	"github.com/brodynelly/luuna-missions/internal/store"
+	"github.com/luuna-ai/luuna-missions/internal/config"
+	"github.com/luuna-ai/luuna-missions/internal/model"
+	"github.com/luuna-ai/luuna-missions/internal/store"
 )
 
 var intentPattern = regexp.MustCompile(`^r-[0-9a-f]{4,8}$`)

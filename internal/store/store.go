@@ -15,7 +15,7 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/brodynelly/luuna-missions/internal/model"
+	"github.com/luuna-ai/luuna-missions/internal/model"
 )
 
 const (

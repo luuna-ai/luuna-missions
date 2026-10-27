@@ -36,7 +36,7 @@ afterEach(async () => {
 describe("luuna-missions config schema", () => {
 	test("emits valid JSON Schema with the expected top-level shape", () => {
 		const schema = configSchema();
-		expect(schema.$id).toBe("https://github.com/brodynelly/luuna-missions/config.schema.json");
+		expect(schema.$id).toBe("https://github.com/luuna-ai/luuna-missions/config.schema.json");
 		expect(schema.type).toBe("object");
 		expect(schema.required).toEqual(["project", "version"]);
 		expect(schema.additionalProperties).toBe(false);

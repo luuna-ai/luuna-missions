@@ -5,9 +5,9 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/brodynelly/luuna-missions/internal/config"
-	"github.com/brodynelly/luuna-missions/internal/model"
-	"github.com/brodynelly/luuna-missions/internal/store"
+	"github.com/luuna-ai/luuna-missions/internal/config"
+	"github.com/luuna-ai/luuna-missions/internal/model"
+	"github.com/luuna-ai/luuna-missions/internal/store"
 )
 
 func addDependency(dir, issueID, blockerID string) error {
