@@ -136,7 +136,7 @@ func parseEditStep(opts cli.Options) (*editStep, error) {
 func jsStringLength(value string) int { return len(utf16.Encode([]rune(value))) }
 
 func editTemplateNames(templates map[string]model.PlanTemplate) string {
-	// Built-ins are registered in this order in the TypeScript object literal.
+	// Built-ins are registered in this order in the declared template order.
 	names := make([]string, 0, len(templates))
 	seen := map[string]bool{}
 	for _, name := range []string{"feature", "bug", "refactor"} {

@@ -21,7 +21,7 @@ _luuna_missions() {
         'migrate-from-beads:Migrate issues from beads issue tracker'
         'prime:Output AI agent context'
         'onboard:Add missions section to CLAUDE.md / AGENTS.md'
-        'upgrade:Upgrade Luuna Missions after publication from npm'
+        'upgrade:Update Luuna Missions through a reviewed checkout'
         'completions:Output shell completion script'
         'block:Add a blocker to an issue'
         'unblock:Remove blockers from an issue'

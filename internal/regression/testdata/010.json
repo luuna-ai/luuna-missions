@@ -1,0 +1,17 @@
+{
+  "name": "leading json option",
+  "args": [
+    "--json"
+  ],
+  "input": "",
+  "root": "<CAPTURE_ROOT>",
+  "before": {},
+  "result": {
+    "stdout": "",
+    "stderr": "error: unknown option '--json'\n",
+    "exit": 1
+  },
+  "after": {},
+  "ids": {},
+  "env": {}
+}

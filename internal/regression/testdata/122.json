@@ -1,0 +1,41 @@
+{
+  "name": "tpl step first",
+  "args": [
+    "tpl",
+    "step",
+    "add",
+    "tpl-8fad",
+    "--title",
+    "Build {prefix}",
+    "--priority",
+    "P1",
+    "--json"
+  ],
+  "input": "",
+  "root": "<CAPTURE_ROOT>",
+  "before": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": "{\"id\":\"tpl-8fad\",\"name\":\"Parity template\",\"steps\":[]}\n"
+  },
+  "result": {
+    "stdout": "{\n  \"success\": true,\n  \"command\": \"tpl step add\",\n  \"id\": \"tpl-8fad\",\n  \"stepCount\": 1\n}\n",
+    "stderr": "",
+    "exit": 0
+  },
+  "after": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": "{\"id\":\"tpl-8fad\",\"name\":\"Parity template\",\"steps\":[{\"title\":\"Build {prefix}\",\"type\":\"task\",\"priority\":1}]}\n"
+  },
+  "ids": {
+    "template_id": "tpl-8fad"
+  },
+  "env": {}
+}

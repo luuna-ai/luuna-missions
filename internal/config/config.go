@@ -109,7 +109,7 @@ func resolveWorktreeRoot(candidate string) string {
 	return candidate
 }
 
-// Init creates exactly the project-owned files established by the Bun CLI.
+// Init creates exactly the project-owned files established by the original CLI.
 // Existing initialized stores are left intact; missing merge attributes are
 // backfilled on every call.
 func Init(projectRoot string) error {

@@ -1,0 +1,41 @@
+{
+  "name": "plan validate after edit",
+  "args": [
+    "plan",
+    "validate",
+    "pl-2fed",
+    "--json"
+  ],
+  "input": "",
+  "root": "<CAPTURE_ROOT>",
+  "before": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "{\"id\":\"project-5ae7\",\"title\":\"Plan seed\",\"status\":\"open\",\"type\":\"feature\",\"priority\":2,\"createdAt\":\"2026-11-12T03:34:30.138Z\",\"updatedAt\":\"2026-11-12T03:34:32.185Z\",\"plan_id\":\"pl-2fed\",\"blockedBy\":[\"project-c946\",\"project-4bfc\"]}\n{\"id\":\"project-c946\",\"title\":\"Implement revised feature\",\"status\":\"open\",\"type\":\"bug\",\"priority\":0,\"plan_step_index\":0,\"description\":\"<!-- missions:plan-backref:start -->\\nStep 1 of plan pl-2fed.\\n\\nParent seed: project-5ae7 — Plan seed\\nPlan template: feature\\nPlan approach: Use a revised approach with clear verification at each stage.\\n\\nRun `luuna-missions plan show pl-2fed` for the full plan (context, alternatives, sibling steps, acceptance criteria).\\n<!-- missions:plan-backref:end -->\",\"createdAt\":\"2026-11-12T03:34:32.185Z\",\"updatedAt\":\"2026-11-12T03:34:33.517Z\",\"plan_id\":\"pl-2fed\",\"blocks\":[\"project-4bfc\",\"project-5ae7\"]}\n{\"id\":\"project-4bfc\",\"title\":\"Verify feature\",\"status\":\"open\",\"type\":\"task\",\"priority\":2,\"plan_step_index\":1,\"description\":\"<!-- missions:plan-backref:start -->\\nStep 2 of plan pl-2fed.\\n\\nParent seed: project-5ae7 — Plan seed\\nPlan template: feature\\nPlan approach: Use a revised approach with clear verification at each stage.\\n\\nRun `luuna-missions plan show pl-2fed` for the full plan (context, alternatives, sibling steps, acceptance criteria).\\n<!-- missions:plan-backref:end -->\",\"createdAt\":\"2026-11-12T03:34:32.185Z\",\"updatedAt\":\"2026-11-12T03:34:33.293Z\",\"plan_id\":\"pl-2fed\",\"blockedBy\":[\"project-c946\"],\"blocks\":[\"project-5ae7\"]}\n",
+    ".luuna/missions/plans.jsonl": "{\"id\":\"pl-2fed\",\"seed\":\"project-5ae7\",\"template\":\"feature\",\"status\":\"approved\",\"revision\":4,\"sections\":{\"context\":\"This work matters because we need to verify a complete structured plan across CLI implementations.\",\"approach\":\"Use a revised approach with clear verification at each stage.\",\"alternatives\":[],\"steps\":[{\"title\":\"Implement revised feature\",\"type\":\"bug\",\"priority\":0,\"blocks\":[2]},{\"title\":\"Verify feature\",\"type\":\"task\",\"priority\":2,\"blocks\":[]}],\"risks\":[],\"acceptance\":[\"The full feature flow works.\"]},\"children\":[\"project-c946\",\"project-4bfc\"],\"createdAt\":\"2026-11-12T03:34:32.185Z\",\"updatedAt\":\"2026-11-12T03:34:33.517Z\",\"name\":\"Revised feature plan\"}\n",
+    ".luuna/missions/templates.jsonl": "",
+    "plan.json": "{\"template\":\"feature\",\"sections\":{\"context\":\"This work matters because we need to verify a complete structured plan across CLI implementations.\",\"approach\":\"Use a small two-step feature plan with an explicit dependency.\",\"alternatives\":[],\"steps\":[{\"title\":\"Implement feature\",\"type\":\"task\",\"priority\":2,\"blocks\":[2]},{\"title\":\"Verify feature\",\"type\":\"task\",\"priority\":2,\"blocks\":[]}],\"risks\":[],\"acceptance\":[\"The full feature flow works.\"]}}"
+  },
+  "result": {
+    "stdout": "{\n  \"success\": true,\n  \"command\": \"plan validate\",\n  \"valid\": true,\n  \"plan_id\": \"pl-2fed\"\n}\n",
+    "stderr": "",
+    "exit": 0
+  },
+  "after": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "{\"id\":\"project-5ae7\",\"title\":\"Plan seed\",\"status\":\"open\",\"type\":\"feature\",\"priority\":2,\"createdAt\":\"2026-11-12T03:34:30.138Z\",\"updatedAt\":\"2026-11-12T03:34:32.185Z\",\"plan_id\":\"pl-2fed\",\"blockedBy\":[\"project-c946\",\"project-4bfc\"]}\n{\"id\":\"project-c946\",\"title\":\"Implement revised feature\",\"status\":\"open\",\"type\":\"bug\",\"priority\":0,\"plan_step_index\":0,\"description\":\"<!-- missions:plan-backref:start -->\\nStep 1 of plan pl-2fed.\\n\\nParent seed: project-5ae7 — Plan seed\\nPlan template: feature\\nPlan approach: Use a revised approach with clear verification at each stage.\\n\\nRun `luuna-missions plan show pl-2fed` for the full plan (context, alternatives, sibling steps, acceptance criteria).\\n<!-- missions:plan-backref:end -->\",\"createdAt\":\"2026-11-12T03:34:32.185Z\",\"updatedAt\":\"2026-11-12T03:34:33.517Z\",\"plan_id\":\"pl-2fed\",\"blocks\":[\"project-4bfc\",\"project-5ae7\"]}\n{\"id\":\"project-4bfc\",\"title\":\"Verify feature\",\"status\":\"open\",\"type\":\"task\",\"priority\":2,\"plan_step_index\":1,\"description\":\"<!-- missions:plan-backref:start -->\\nStep 2 of plan pl-2fed.\\n\\nParent seed: project-5ae7 — Plan seed\\nPlan template: feature\\nPlan approach: Use a revised approach with clear verification at each stage.\\n\\nRun `luuna-missions plan show pl-2fed` for the full plan (context, alternatives, sibling steps, acceptance criteria).\\n<!-- missions:plan-backref:end -->\",\"createdAt\":\"2026-11-12T03:34:32.185Z\",\"updatedAt\":\"2026-11-12T03:34:33.293Z\",\"plan_id\":\"pl-2fed\",\"blockedBy\":[\"project-c946\"],\"blocks\":[\"project-5ae7\"]}\n",
+    ".luuna/missions/plans.jsonl": "{\"id\":\"pl-2fed\",\"seed\":\"project-5ae7\",\"template\":\"feature\",\"status\":\"approved\",\"revision\":4,\"sections\":{\"context\":\"This work matters because we need to verify a complete structured plan across CLI implementations.\",\"approach\":\"Use a revised approach with clear verification at each stage.\",\"alternatives\":[],\"steps\":[{\"title\":\"Implement revised feature\",\"type\":\"bug\",\"priority\":0,\"blocks\":[2]},{\"title\":\"Verify feature\",\"type\":\"task\",\"priority\":2,\"blocks\":[]}],\"risks\":[],\"acceptance\":[\"The full feature flow works.\"]},\"children\":[\"project-c946\",\"project-4bfc\"],\"createdAt\":\"2026-11-12T03:34:32.185Z\",\"updatedAt\":\"2026-11-12T03:34:33.517Z\",\"name\":\"Revised feature plan\"}\n",
+    ".luuna/missions/templates.jsonl": "",
+    "plan.json": "{\"template\":\"feature\",\"sections\":{\"context\":\"This work matters because we need to verify a complete structured plan across CLI implementations.\",\"approach\":\"Use a small two-step feature plan with an explicit dependency.\",\"alternatives\":[],\"steps\":[{\"title\":\"Implement feature\",\"type\":\"task\",\"priority\":2,\"blocks\":[2]},{\"title\":\"Verify feature\",\"type\":\"task\",\"priority\":2,\"blocks\":[]}],\"risks\":[],\"acceptance\":[\"The full feature flow works.\"]}}"
+  },
+  "ids": {
+    "create_plan_seed": "project-5ae7",
+    "plan_id": "pl-2fed",
+    "plan_child_1": "project-c946",
+    "plan_child_2": "project-4bfc"
+  },
+  "env": {}
+}

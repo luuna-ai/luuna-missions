@@ -25,7 +25,7 @@ type Diff struct {
 }
 
 // Validate mirrors the plan template schema and the step-specific checks in
-// src/plan-schema.ts. Unknown keys remain allowed, as in the source schema.
+// the plan schema contract. Unknown keys remain allowed, as in the source schema.
 func Validate(template model.PlanTemplate, submitted any) (bool, *Diff) {
 	errors := make([]ErrorEntry, 0)
 	data, ok := submitted.(map[string]any)

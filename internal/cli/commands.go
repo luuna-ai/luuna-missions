@@ -2,7 +2,7 @@ package cli
 
 // RegisterBuiltins installs the public command order and Go handlers.
 // Domain packages replace their placeholder entry through Register. The
-// TypeScript implementation remains a parity oracle for this active Go CLI.
+// public command inventory is implemented by the native handlers.
 func RegisterBuiltins(app *App) {
 	for _, command := range []*Command{
 		{Name: "init", Description: "Initialize .luuna/missions/ in current directory", Run: runInit},
@@ -23,7 +23,7 @@ func RegisterBuiltins(app *App) {
 		{Name: "migrate-from-beads", Description: "Migrate issues from beads issue tracker", Run: runMigrateBeads},
 		{Name: "prime", Description: "Output AI agent context", Run: runPrime},
 		{Name: "onboard", Description: "Add missions section to CLAUDE.md / AGENTS.md", Run: runOnboard},
-		{Name: "upgrade", Description: "Upgrade Luuna Missions after publication from npm", Run: runUpgrade},
+		{Name: "upgrade", Description: "Update Luuna Missions through a reviewed checkout", Run: runUpgrade},
 		{Name: "completions", Arguments: "<shell>", Description: "Output shell completion script", Run: runCompletions},
 		{Name: "block", Arguments: "<id>", Description: "Add a blocker to an issue", Run: runBlock},
 		{Name: "unblock", Arguments: "<id>", Description: "Remove blockers from an issue", Run: runUnblock},

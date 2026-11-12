@@ -1,0 +1,15 @@
+{
+  "name": "no command",
+  "args": [],
+  "input": "",
+  "root": "<CAPTURE_ROOT>",
+  "before": {},
+  "result": {
+    "stdout": "",
+    "stderr": "Luuna Missions v0.6.0 — Git-native issue tracking\n\nUsage: luuna-missions <command> [options]\n\nCommands:\n  init              Initialize .luuna/missions/ in current directory\n  create            Create a new issue\n  show <id> [ids]   Show one or more issues\n  list              List issues with filters\n  ready             Show open issues with no unresolved blockers\n  search <query>    Full-text search title + description\n  update <id>       Update issue fields\n  close <id> [ids]  Close one or more issues\n  dep               Manage issue dependencies\n  label             Manage issue labels\n  blocked           Show all blocked issues\n  stats             Project statistics\n  sync              Stage and commit .luuna/missions/ changes\n  doctor            Check project health and data integrity\n  tpl               Manage issue templates (molecules)\n  migrate-from-beads  Migrate issues from beads issue tracker\n  prime             Output AI agent context\n  onboard           Add missions section to CLAUDE.md / AGENTS.md\n  upgrade           Update Luuna Missions through a reviewed checkout\n  completions <shell>  Output shell completion script\n  block <id>        Add a blocker to an issue\n  unblock <id>      Remove blockers from an issue\n  plan              Plan management\n  config            Read, write, and inspect .luuna/missions/config.yaml\n  setup <target>    Install Claude Code hooks: prime on session start, guard .luuna/missions/*.jsonl edits\n  guard             PreToolUse hook: deny hand edits to .luuna/missions/*.jsonl (reads hook JSON on stdin)\n\nOptions:\n  -h, --help        Show help\n  -v, --version     Print version\n  --format <mode>   Output format (markdown|compact|plain|ids|json)\n  --json            Alias for --format json\n  -q, --quiet       Suppress non-error output\n  --verbose         Extra diagnostic output\n  --timing          Show command execution time\n\nRun 'luuna-missions <command> --help' for command-specific help.\n",
+    "exit": 1
+  },
+  "after": {},
+  "ids": {},
+  "env": {}
+}

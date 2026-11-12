@@ -11,7 +11,7 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-// DisplayTree emits the config tree in source declaration order, as the Bun
+// DisplayTree emits the config tree in source declaration order, as the original
 // command's parse/stringify cycle does for human-readable `config show`.
 func DisplayTree(dir string, tree map[string]any) (string, error) {
 	content, err := os.ReadFile(filepath.Join(dir, model.ConfigFile))

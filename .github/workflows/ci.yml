@@ -9,43 +9,14 @@ concurrency:
   cancel-in-progress: true
 jobs:
   verify:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24.19.0
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: 1.4.3
-      - run: bun install --frozen-lockfile --ignore-scripts
-      - run: bun run verify
-      - name: Reject tracked private artifacts
-        run: |
-          python3 - <<'PY'
-          import subprocess, re
-          paths = subprocess.check_output(['git', 'ls-files', '-z'], text=True).split('\0')
-          bad = [p for p in paths if re.search(r'(^|/)(node_modules|\.pi|\.luuna)/|(^|/)\.env($|\.(?!example$))', p)]
-          assert not bad, 'Private artifacts must not be tracked'
-          PY
-  verify-windows:
-    # Same supported surface on Windows. The pipe regression tests run real
-    # bash pipelines; the bunfig test preload puts Git for Windows' usr/bin
-    # on PATH.
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24.19.0
-      - uses: actions/setup-go@v5
-        with:
-          go-version-file: go.mod
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: 1.4.3
-      - run: bun install --frozen-lockfile --ignore-scripts
-      - run: bun run verify
+      - run: go run ./cmd/dev verify

@@ -1,0 +1,36 @@
+{
+  "name": "tpl step add help",
+  "args": [
+    "tpl",
+    "step",
+    "add",
+    "--help"
+  ],
+  "input": "",
+  "root": "<CAPTURE_ROOT>",
+  "before": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": "{\"id\":\"tpl-8fad\",\"name\":\"Parity template\",\"steps\":[{\"title\":\"Build {prefix}\",\"type\":\"task\",\"priority\":1},{\"title\":\"Check {prefix}\",\"type\":\"bug\",\"priority\":2}]}\n"
+  },
+  "result": {
+    "stdout": "Usage: luuna-missions tpl step add [options] <id>\n\nAdd a step to a template\n\nOptions:\n  --title <text>  Step title\n  --type <type>   Step type (task|bug|feature|epic) (default: \"task\")\n  --priority <n>  Step priority 0-4 (default: \"2\")\n  --json          Output as JSON\n  -h, --help      display help for command\n",
+    "stderr": "",
+    "exit": 0
+  },
+  "after": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": "{\"id\":\"tpl-8fad\",\"name\":\"Parity template\",\"steps\":[{\"title\":\"Build {prefix}\",\"type\":\"task\",\"priority\":1},{\"title\":\"Check {prefix}\",\"type\":\"bug\",\"priority\":2}]}\n"
+  },
+  "ids": {
+    "template_id": "tpl-8fad"
+  },
+  "env": {}
+}

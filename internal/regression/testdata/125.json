@@ -1,0 +1,35 @@
+{
+  "name": "tpl list",
+  "args": [
+    "tpl",
+    "list",
+    "--json"
+  ],
+  "input": "",
+  "root": "<CAPTURE_ROOT>",
+  "before": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": "{\"id\":\"tpl-8fad\",\"name\":\"Parity template\",\"steps\":[{\"title\":\"Build {prefix}\",\"type\":\"task\",\"priority\":1},{\"title\":\"Check {prefix}\",\"type\":\"bug\",\"priority\":2}]}\n"
+  },
+  "result": {
+    "stdout": "{\n  \"success\": true,\n  \"command\": \"tpl list\",\n  \"templates\": [\n    {\n      \"id\": \"tpl-8fad\",\n      \"name\": \"Parity template\",\n      \"steps\": [\n        {\n          \"title\": \"Build {prefix}\",\n          \"type\": \"task\",\n          \"priority\": 1\n        },\n        {\n          \"title\": \"Check {prefix}\",\n          \"type\": \"bug\",\n          \"priority\": 2\n        }\n      ]\n    }\n  ],\n  \"count\": 1\n}\n",
+    "stderr": "",
+    "exit": 0
+  },
+  "after": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": "{\"id\":\"tpl-8fad\",\"name\":\"Parity template\",\"steps\":[{\"title\":\"Build {prefix}\",\"type\":\"task\",\"priority\":1},{\"title\":\"Check {prefix}\",\"type\":\"bug\",\"priority\":2}]}\n"
+  },
+  "ids": {
+    "template_id": "tpl-8fad"
+  },
+  "env": {}
+}

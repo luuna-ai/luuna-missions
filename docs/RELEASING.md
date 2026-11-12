@@ -9,7 +9,7 @@ Each archive is `luuna-missions_<version>_<os>_<arch>.tar.gz`, where `os` is `da
 - `bin/luuna-missions`
 - `bin/lms`
 
-Both are regular files with mode 0755, owner `0:0` and a fixed mtime of 2000-01-01T00:00:00Z (`946684800`), set in UTC so the archive bytes do not depend on the builder's time zone. There is no directory entry. The compatibility aliases `lm` and `missions` are deliberately excluded from public archives, but they remain Bun package bins for source use. `lms` is a byte-identical copy of the primary: `cmd/luuna-missions/main.go` passes `os.Args[1:]` and never inspects argv[0], so behavior and arguments are identical under either name. The help text always says `luuna-missions`.
+Both are regular files with mode 0755, owner `0:0` and a fixed mtime of 2000-01-01T00:00:00Z (`946684800`), set in UTC so the archive bytes do not depend on the builder's time zone. There is no directory entry. The compatibility aliases `lm` and `missions` are deliberately excluded from public archives, but the local Go developer build produces them. `lms` is a byte-identical copy of the primary: `cmd/luuna-missions/main.go` passes `os.Args[1:]` and never inspects argv[0], so behavior and arguments are identical under either name. The help text always says `luuna-missions`.
 
 These files sit next to the archive:
 
@@ -17,7 +17,7 @@ These files sit next to the archive:
 - `SHA256SUMS` lists the archive, `provenance.json`, `LICENSE` and `UPSTREAM.md`.
 - `provenance.json` is self-reported metadata. It records repository, commit, ref, `source_tree_dirty` (source-tree dirtiness, including untracked non-ignored files; `null` when unknown), workflow run id, runner, Go version, build env/flags/ldflags, the archive SHA256, and two separate versions:
   - `archive_version`: the `--version` you pass, used in the file name.
-  - `internal_version`: the version the binary prints for `--version`. It comes from `package.json`, today the `0.6.0` upstream compatibility baseline, and is injected through the existing symbol `github.com/luuna-ai/luuna-missions/internal/cli.CurrentVersion`, the same one `scripts/native-build.ts` sets.
+  - `internal_version`: the version the binary prints for `--version`. It comes from `internal/cli/app.go`, currently the `0.6.0` upstream compatibility baseline, and is injected through `github.com/luuna-ai/luuna-missions/internal/cli.CurrentVersion`.
 
   Outside a Git work tree, `commit`, `ref` (unless `GITHUB_REF` is set) and `source_tree_dirty` are JSON `null`; an unknown Go version is also `null`. `provenance.json` is not an attestation.
 
@@ -36,7 +36,6 @@ sh scripts/release/check-archive.sh --require-run "$a"
 - `package.sh` sets `GOTOOLCHAIN=local` unless you override it, so it never downloads a Go toolchain.
 - The first build may download the `gopkg.in/yaml.v3` module into the Go module cache.
 - Use `LUUNA_MISSIONS_GO` to choose a Go executable.
-- `bun run check:agents` treats the ignored `dist/` build output as known-missing, so it passes on a fresh checkout; a local Bun for validation may live in the ignored `.tac/tools/`.
 
 `check-archive.sh` checks these, in order, before it lists or extracts anything (exit 4 on any `SHA256SUMS` problem):
 
@@ -66,10 +65,10 @@ It then extracts into a private temp dir. On the host platform it runs `--help` 
 
   The parent plan named `macos-13`, which GitHub has retired. `macos-15-intel` replaces it.
 - **Steps:** Go tests → release-script tests → `package.sh` → `check-archive.sh --require-run` (fails if the binaries were not executed on the runner) → `actions/upload-artifact`.
-- **Not included:** `gh release`, `npm publish` and registry steps. The attestation step is present but commented out.
+- **Not included:** `gh release`, registry publication and registry steps. The attestation step is present but commented out.
 - **Toolchain:** `actions/setup-go` resolves `go-version-file: go.mod`, whose `go 1.22` directive is a minimum, not an exact pin. `GOTOOLCHAIN=local` stops a second toolchain download. Record the exact Go version from `provenance.json`. Exact pinning (for example `go-version: 1.27.x`) is an owner decision.
 
-Bun is not needed for release builds. The existing `bun run verify` CI is unchanged.
+Component CI uses `go run ./cmd/dev verify` on Linux, Windows and macOS. Release builds use Go and the shell packaging scripts.
 
 ## Deferred owner gates
 
@@ -79,7 +78,7 @@ Bun is not needed for release builds. The existing `bun run verify` CI is unchan
 4. Choose a distinct Luuna release version (see `UPSTREAM.md`), then create the tag and GitHub Release and upload the assets.
 5. Add the hub manifest row (`luuna-ai-os/releases/<v>/manifest.tsv`) through a reviewed PR in that repository.
 
-npm publication of `@luuna/missions-cli` remains separate and unpublished.
+Registry publication of `@luuna/missions-cli` remains separate and unpublished.
 
 ## Limits
 

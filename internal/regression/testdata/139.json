@@ -1,0 +1,33 @@
+{
+  "name": "guard deny",
+  "args": [
+    "guard"
+  ],
+  "input": "{\"tool_name\":\"Edit\",\"tool_input\":{\"file_path\":\".luuna/missions/issues.jsonl\"}}",
+  "root": "<CAPTURE_ROOT>",
+  "before": {
+    ".claude/settings.json": "{}\n",
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "result": {
+    "stdout": "{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"missions: do not edit .luuna/missions/issues.jsonl by hand; use luuna-missions create / luuna-missions update / luuna-missions close / luuna-missions dep / luuna-missions label (luuna-missions commands lock, validate, and dedup the store).\"}}\n",
+    "stderr": "",
+    "exit": 0
+  },
+  "after": {
+    ".claude/settings.json": "{}\n",
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "ids": {},
+  "env": {}
+}

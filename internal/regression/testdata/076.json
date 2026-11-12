@@ -1,0 +1,36 @@
+{
+  "name": "list all",
+  "args": [
+    "list",
+    "--all",
+    "--json"
+  ],
+  "input": "",
+  "root": "<CAPTURE_ROOT>",
+  "before": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "{\"id\":\"project-5b99\",\"title\":\"Renamed core feature\",\"status\":\"closed\",\"type\":\"feature\",\"priority\":0,\"createdAt\":\"2026-11-12T03:34:06.900Z\",\"updatedAt\":\"2026-11-12T03:34:13.849Z\",\"labels\":[\"api\",\"ui\"],\"description\":\"Updated description\",\"closedAt\":\"2026-11-12T03:34:13.849Z\",\"closeReason\":\"complete\"}\n{\"id\":\"project-567b\",\"title\":\"Core followup\",\"status\":\"in_progress\",\"type\":\"task\",\"priority\":3,\"createdAt\":\"2026-11-12T03:34:07.115Z\",\"updatedAt\":\"2026-11-12T03:34:13.379Z\",\"assignee\":\"parity\"}\n",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "result": {
+    "stdout": "{\n  \"success\": true,\n  \"command\": \"list\",\n  \"issues\": [\n    {\n      \"id\": \"project-5b99\",\n      \"title\": \"Renamed core feature\",\n      \"status\": \"closed\",\n      \"type\": \"feature\",\n      \"priority\": 0,\n      \"createdAt\": \"2026-11-12T03:34:06.900Z\",\n      \"updatedAt\": \"2026-11-12T03:34:13.849Z\",\n      \"labels\": [\n        \"api\",\n        \"ui\"\n      ],\n      \"description\": \"Updated description\",\n      \"closedAt\": \"2026-11-12T03:34:13.849Z\",\n      \"closeReason\": \"complete\"\n    },\n    {\n      \"id\": \"project-567b\",\n      \"title\": \"Core followup\",\n      \"status\": \"in_progress\",\n      \"type\": \"task\",\n      \"priority\": 3,\n      \"createdAt\": \"2026-11-12T03:34:07.115Z\",\n      \"updatedAt\": \"2026-11-12T03:34:13.379Z\",\n      \"assignee\": \"parity\"\n    }\n  ],\n  \"count\": 2\n}\n",
+    "stderr": "",
+    "exit": 0
+  },
+  "after": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "{\"id\":\"project-5b99\",\"title\":\"Renamed core feature\",\"status\":\"closed\",\"type\":\"feature\",\"priority\":0,\"createdAt\":\"2026-11-12T03:34:06.900Z\",\"updatedAt\":\"2026-11-12T03:34:13.849Z\",\"labels\":[\"api\",\"ui\"],\"description\":\"Updated description\",\"closedAt\":\"2026-11-12T03:34:13.849Z\",\"closeReason\":\"complete\"}\n{\"id\":\"project-567b\",\"title\":\"Core followup\",\"status\":\"in_progress\",\"type\":\"task\",\"priority\":3,\"createdAt\":\"2026-11-12T03:34:07.115Z\",\"updatedAt\":\"2026-11-12T03:34:13.379Z\",\"assignee\":\"parity\"}\n",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "ids": {
+    "create_feature": "project-5b99",
+    "create_followup": "project-567b"
+  },
+  "env": {}
+}

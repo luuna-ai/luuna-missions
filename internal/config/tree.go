@@ -52,7 +52,7 @@ func ReadTree(dir string) (map[string]any, error) {
 }
 
 // WriteTree writes a validated tree with the same atomic replacement strategy
-// as the Bun config command. The caller holds the config.yaml advisory lock.
+// as the original config command. The caller holds the config.yaml advisory lock.
 // Existing key declaration order is retained where possible.
 func WriteTree(dir string, tree map[string]any) error {
 	path := filepath.Join(dir, model.ConfigFile)
@@ -95,20 +95,20 @@ func WriteTree(dir string, tree map[string]any) error {
 	return os.Rename(tmpPath, path)
 }
 
-func collectKeyOrder(node *yaml.Node, path string, orders map[string][]string) {
-	if node.Kind == yaml.SequenceNode {
-		for i, item := range node.Content {
+func collectKeyOrder(entry *yaml.Node, path string, orders map[string][]string) {
+	if entry.Kind == yaml.SequenceNode {
+		for i, item := range entry.Content {
 			collectKeyOrder(item, path+"/"+strconv.Itoa(i), orders)
 		}
 		return
 	}
-	if node.Kind != yaml.MappingNode {
+	if entry.Kind != yaml.MappingNode {
 		return
 	}
-	for i := 0; i+1 < len(node.Content); i += 2 {
-		key := node.Content[i].Value
+	for i := 0; i+1 < len(entry.Content); i += 2 {
+		key := entry.Content[i].Value
 		orders[path] = append(orders[path], key)
-		collectKeyOrder(node.Content[i+1], path+"/"+key, orders)
+		collectKeyOrder(entry.Content[i+1], path+"/"+key, orders)
 	}
 }
 

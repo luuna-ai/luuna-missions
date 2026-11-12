@@ -352,24 +352,24 @@ func doctorCyclesCheck(issues []model.Issue) doctorCheck {
 	}
 	visited, inStack, cycles := map[string]bool{}, map[string]bool{}, [][]string{}
 	var walk func(string, []string)
-	walk = func(node string, path []string) {
-		if inStack[node] {
+	walk = func(entry string, path []string) {
+		if inStack[entry] {
 			for i, candidate := range path {
-				if candidate == node {
-					cycles = append(cycles, append(append([]string(nil), path[i:]...), node))
+				if candidate == entry {
+					cycles = append(cycles, append(append([]string(nil), path[i:]...), entry))
 					break
 				}
 			}
 			return
 		}
-		if visited[node] {
+		if visited[entry] {
 			return
 		}
-		visited[node], inStack[node] = true, true
-		for _, dep := range graph[node] {
-			walk(dep, append(append([]string(nil), path...), node))
+		visited[entry], inStack[entry] = true, true
+		for _, dep := range graph[entry] {
+			walk(dep, append(append([]string(nil), path...), entry))
 		}
-		delete(inStack, node)
+		delete(inStack, entry)
 	}
 	for _, issue := range issues {
 		walk(issue.ID, nil)

@@ -1,0 +1,35 @@
+{
+  "name": "plan templates",
+  "args": [
+    "plan",
+    "templates",
+    "--json"
+  ],
+  "input": "",
+  "root": "<CAPTURE_ROOT>",
+  "before": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "{\"id\":\"project-5ae7\",\"title\":\"Plan seed\",\"status\":\"open\",\"type\":\"feature\",\"priority\":2,\"createdAt\":\"2026-11-12T03:34:30.138Z\",\"updatedAt\":\"2026-11-12T03:34:30.138Z\"}\n",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "result": {
+    "stdout": "{\n  \"success\": true,\n  \"command\": \"plan templates\",\n  \"templates\": [\n    {\n      \"name\": \"bug\",\n      \"description\": \"Defect fix. Adds reproduction and root_cause sections. Default for type: bug.\"\n    },\n    {\n      \"name\": \"feature\",\n      \"description\": \"New capability or significant change. Default for type: feature.\"\n    },\n    {\n      \"name\": \"refactor\",\n      \"description\": \"Internal restructuring. Adds behavior_invariant (must stay equal). Opt-in via --template refactor.\"\n    }\n  ],\n  \"count\": 3\n}\n",
+    "stderr": "",
+    "exit": 0
+  },
+  "after": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "{\"id\":\"project-5ae7\",\"title\":\"Plan seed\",\"status\":\"open\",\"type\":\"feature\",\"priority\":2,\"createdAt\":\"2026-11-12T03:34:30.138Z\",\"updatedAt\":\"2026-11-12T03:34:30.138Z\"}\n",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "ids": {
+    "create_plan_seed": "project-5ae7"
+  },
+  "env": {}
+}

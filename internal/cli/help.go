@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-// Command help is generated from the TypeScript Commander registry. The
+// Command help is generated from the command registry. The
 // snapshots keep option names, descriptions, line wrapping, and nested usage
 // stable while the Go handlers adopt the same public surface.
 //

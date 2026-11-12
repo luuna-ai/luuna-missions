@@ -1,0 +1,36 @@
+{
+  "name": "template rejects create sibling option",
+  "args": [
+    "tpl",
+    "create",
+    "--name",
+    "unused",
+    "--title",
+    "unexpected"
+  ],
+  "input": "",
+  "root": "<CAPTURE_ROOT>",
+  "before": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "result": {
+    "stdout": "",
+    "stderr": "error: unknown option '--title'\n",
+    "exit": 1
+  },
+  "after": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "ids": {},
+  "env": {}
+}

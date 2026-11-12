@@ -1,7 +1,7 @@
 #!/bin/sh
 # Offline tests for package.sh and check-archive.sh.
-# Uses generated #!/bin/sh stub archives and a stub `go`; needs no network,
-# Go or Bun. Needs git for the provenance cases. Everything happens in a
+# Uses generated #!/bin/sh stub archives and a stub `go`; needs neither network access nor
+# the Go compiler. Needs git for the provenance cases. Everything happens in a
 # private temporary directory; the real working tree is never modified.
 #
 #   sh scripts/release/test-release-scripts.sh
@@ -254,8 +254,8 @@ chmod 0755 "$stub_go"
 
 # make_src DIR: minimal source tree that package.sh accepts as its root.
 make_src() {
-    mkdir -p "$1/scripts/release" "$1/cmd/luuna-missions"
-    for f in go.mod package.json LICENSE UPSTREAM.md cmd/luuna-missions/main.go scripts/release/package.sh; do
+    mkdir -p "$1/scripts/release" "$1/cmd/luuna-missions" "$1/internal/cli"
+    for f in go.mod internal/cli/app.go LICENSE UPSTREAM.md cmd/luuna-missions/main.go scripts/release/package.sh; do
         cp "$repo_root/$f" "$1/$f"
     done
     printf 'dist/\n' >"$1/.gitignore"

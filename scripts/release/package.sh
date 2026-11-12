@@ -125,11 +125,9 @@ root=$(cd "$(dirname "$0")/../.." && pwd -P)
 go_bin=${LUUNA_MISSIONS_GO:-go}
 command -v "$go_bin" >/dev/null 2>&1 || die "go not found (set LUUNA_MISSIONS_GO)" 1
 
-# The binary reports the component's internal compatibility version (the
-# package.json version, same symbol scripts/native-build.ts sets). The archive
-# version is recorded separately in the file name and provenance.json.
-internal_version=$(sed -n 's/^[[:space:]]*"version":[[:space:]]*"\([^"]*\)".*/\1/p' "$root/package.json" | head -n 1)
-valid_version "$internal_version" || die "cannot read internal version from package.json" 1
+# Read the compatibility version from the native CLI source.
+internal_version=$(sed -n 's/^var CurrentVersion = "\([^"]*\)".*/\1/p' "$root/internal/cli/app.go" | head -n 1)
+valid_version "$internal_version" || die "cannot read internal version from internal/cli/app.go" 1
 version_symbol=github.com/luuna-ai/luuna-missions/internal/cli.CurrentVersion
 ldflags="-s -w -X $version_symbol=$internal_version"
 

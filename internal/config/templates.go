@@ -167,13 +167,13 @@ func customTemplateSectionOrder(content []byte) map[string][]string {
 	return orders
 }
 
-func mappingValue(node *yaml.Node, key string) *yaml.Node {
-	if node.Kind != yaml.MappingNode {
+func mappingValue(entry *yaml.Node, key string) *yaml.Node {
+	if entry.Kind != yaml.MappingNode {
 		return nil
 	}
-	for i := 0; i+1 < len(node.Content); i += 2 {
-		if node.Content[i].Value == key {
-			return node.Content[i+1]
+	for i := 0; i+1 < len(entry.Content); i += 2 {
+		if entry.Content[i].Value == key {
+			return entry.Content[i+1]
 		}
 	}
 	return nil

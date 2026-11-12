@@ -24,7 +24,7 @@ var (
 	}
 )
 
-// Issue mirrors the JSONL record contract in src/types.ts. The pointer for
+// Issue mirrors the JSONL record contract in the public record schema. The pointer for
 // PlanStepIndex distinguishes an absent field from the valid zero index.
 type Issue struct {
 	ID             string         `json:"id"`
@@ -118,11 +118,11 @@ type PlanTemplate struct {
 
 func IntPtr(v int) *int { return &v }
 
-// NowISO matches JavaScript Date#toISOString: UTC with exactly three decimal
+// NowISO matches the public timestamp contract: UTC with exactly three decimal
 // digits, including trailing zeros.
 func NowISO() string { return time.Now().UTC().Format("2006-01-02T15:04:05.000Z") }
 
-// GenerateID uses the same project-prefix and four-hex scheme as the Bun CLI.
+// GenerateID uses the same project-prefix and four-hex scheme as the original CLI.
 // After 100 collisions it falls back to eight hex digits.
 func GenerateID(prefix string, existing map[string]bool) (string, error) {
 	makeID := func(hexDigits int) (string, error) {

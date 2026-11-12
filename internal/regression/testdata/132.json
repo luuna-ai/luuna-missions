@@ -1,0 +1,38 @@
+{
+  "name": "tpl missing",
+  "args": [
+    "tpl",
+    "show",
+    "missing-0000",
+    "--json"
+  ],
+  "input": "",
+  "root": "<CAPTURE_ROOT>",
+  "before": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "{\"id\":\"project-bbe0\",\"title\":\"Build feature\",\"status\":\"closed\",\"type\":\"task\",\"priority\":1,\"createdAt\":\"2026-11-12T03:34:25.096Z\",\"updatedAt\":\"2026-11-12T03:34:25.728Z\",\"convoy\":\"tpl-8fad\",\"blocks\":[\"project-2c7b\"],\"closedAt\":\"2026-11-12T03:34:25.728Z\"}\n{\"id\":\"project-2c7b\",\"title\":\"Check feature\",\"status\":\"open\",\"type\":\"bug\",\"priority\":2,\"createdAt\":\"2026-11-12T03:34:25.096Z\",\"updatedAt\":\"2026-11-12T03:34:25.728Z\",\"convoy\":\"tpl-8fad\"}\n",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": "{\"id\":\"tpl-8fad\",\"name\":\"Parity template\",\"steps\":[{\"title\":\"Build {prefix}\",\"type\":\"task\",\"priority\":1},{\"title\":\"Check {prefix}\",\"type\":\"bug\",\"priority\":2}]}\n"
+  },
+  "result": {
+    "stdout": "{\n  \"success\": false,\n  \"command\": \"tpl\",\n  \"error\": \"Template not found: missing-0000\"\n}\n",
+    "stderr": "",
+    "exit": 1
+  },
+  "after": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "{\"id\":\"project-bbe0\",\"title\":\"Build feature\",\"status\":\"closed\",\"type\":\"task\",\"priority\":1,\"createdAt\":\"2026-11-12T03:34:25.096Z\",\"updatedAt\":\"2026-11-12T03:34:25.728Z\",\"convoy\":\"tpl-8fad\",\"blocks\":[\"project-2c7b\"],\"closedAt\":\"2026-11-12T03:34:25.728Z\"}\n{\"id\":\"project-2c7b\",\"title\":\"Check feature\",\"status\":\"open\",\"type\":\"bug\",\"priority\":2,\"createdAt\":\"2026-11-12T03:34:25.096Z\",\"updatedAt\":\"2026-11-12T03:34:25.728Z\",\"convoy\":\"tpl-8fad\"}\n",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": "{\"id\":\"tpl-8fad\",\"name\":\"Parity template\",\"steps\":[{\"title\":\"Build {prefix}\",\"type\":\"task\",\"priority\":1},{\"title\":\"Check {prefix}\",\"type\":\"bug\",\"priority\":2}]}\n"
+  },
+  "ids": {
+    "template_id": "tpl-8fad",
+    "template_child_1": "project-bbe0",
+    "template_child_2": "project-2c7b"
+  },
+  "env": {}
+}

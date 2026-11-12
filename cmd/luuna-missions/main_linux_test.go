@@ -16,7 +16,7 @@ func TestCompletionsClosedStdoutExitsZero(t *testing.T) {
 		goBinary = "go"
 	}
 	binary := filepath.Join(t.TempDir(), "luuna-missions")
-	build := exec.Command(goBinary, "build", "-o", binary, ".")
+	build := exec.Command(goBinary, "build", "-buildvcs=false", "-o", binary, ".")
 	if output, err := build.CombinedOutput(); err != nil {
 		t.Fatalf("build native CLI: %v\n%s", err, output)
 	}

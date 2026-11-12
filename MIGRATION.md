@@ -8,7 +8,7 @@ At extraction time, the maintainer was brodynelly and the initial destination wa
 - Original upstream provenance and pre-branding import revision remain in UPSTREAM.md; the complete earlier monorepo history stays in Luuna.
 - Source, data formats, aliases, dependencies and lockfile are unchanged by extraction. LICENSE SHA-256: `9d36b754124311e7363b9f800e147f95b4dcaea008aa3565b70e15b8a7462f0a`.
 - This commit adds standalone ownership, documentation and CI. Luuna consumes the exact reviewed Git commit as a submodule at the existing path.
-- No registry package is published. GitHub access supplies source retrieval; npm release credentials are intentionally unnecessary.
+- No registry package is published. GitHub access supplies source retrieval; registry release credentials are intentionally unnecessary.
 
 The extraction was publicly authorized on October 21, 2026. At that time, the Luuna core repository remained private. No private authoring records or credential files were included in the extracted history. The current Luuna core repository is public under the luuna-ai organization.
 
@@ -23,3 +23,7 @@ The owner requested the explicit luuna-* repository names on October 21, 2026. G
 - Environment variables: `SEEDS_DEBUG` and `SEEDS_LOG_LEVEL` are now `LUUNA_MISSIONS_DEBUG` and `LUUNA_MISSIONS_LOG_LEVEL`. The old names are no longer read.
 - Onboard and plan-backref markers changed from `seeds:*` / `seeds-onboard-*` to `missions:*` / `missions-onboard-*`; existing sections are re-written by `onboard`.
 - Plan-template section key `mulch_source` in `config.yaml` is now `atlas_source`; the old key is still accepted and is rewritten when the config is saved with `luuna-missions config set`. Prior-art enrichment and `--record-decision` call `luuna-atlas` instead of `ml`.
+
+# Native CLI migration
+
+Build with `go run ./cmd/dev build` and invoke a compiled executable from `dist/`. The former source launcher is removed; consumers must update their executable path separately. Version JSON now reports runtime `go`; ticket/plan records and configuration are unchanged. Verification uses `go run ./cmd/dev verify`.

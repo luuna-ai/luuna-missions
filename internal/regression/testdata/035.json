@@ -1,0 +1,35 @@
+{
+  "name": "doctor",
+  "args": [
+    "doctor",
+    "--json"
+  ],
+  "input": "",
+  "root": "<CAPTURE_ROOT>",
+  "before": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "{\"id\":\"project-8fc8\",\"title\":\"Feature ticket\",\"status\":\"closed\",\"type\":\"feature\",\"priority\":1,\"createdAt\":\"2026-11-12T03:34:01.854Z\",\"updatedAt\":\"2026-11-12T03:34:04.341Z\",\"labels\":[\"api\",\"core\",\"backend\"],\"blocks\":[\"project-0018\"],\"assignee\":\"parity\",\"closedAt\":\"2026-11-12T03:34:04.341Z\",\"closeReason\":\"done\"}\n{\"id\":\"project-0018\",\"title\":\"Follow-up task\",\"status\":\"open\",\"type\":\"task\",\"priority\":2,\"createdAt\":\"2026-11-12T03:34:02.081Z\",\"updatedAt\":\"2026-11-12T03:34:04.341Z\"}\n",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "result": {
+    "stdout": "{\n  \"success\": true,\n  \"command\": \"doctor\",\n  \"checks\": [\n    {\n      \"name\": \"config\",\n      \"status\": \"pass\",\n      \"message\": \"Config is valid\",\n      \"details\": [],\n      \"fixable\": false\n    },\n    {\n      \"name\": \"jsonl-integrity\",\n      \"status\": \"pass\",\n      \"message\": \"All JSONL lines parse correctly\",\n      \"details\": [],\n      \"fixable\": false\n    },\n    {\n      \"name\": \"schema-validation\",\n      \"status\": \"pass\",\n      \"message\": \"All issues have valid schema\",\n      \"details\": [],\n      \"fixable\": false\n    },\n    {\n      \"name\": \"duplicate-ids\",\n      \"status\": \"pass\",\n      \"message\": \"No duplicate IDs\",\n      \"details\": [],\n      \"fixable\": false\n    },\n    {\n      \"name\": \"referential-integrity\",\n      \"status\": \"pass\",\n      \"message\": \"All dependency references are valid\",\n      \"details\": [],\n      \"fixable\": false\n    },\n    {\n      \"name\": \"bidirectional-consistency\",\n      \"status\": \"warn\",\n      \"message\": \"1 bidirectional mismatch(es)\",\n      \"details\": [\n        \"project-8fc8.blocks has project-0018, but project-0018.blockedBy missing project-8fc8\"\n      ],\n      \"fixable\": true\n    },\n    {\n      \"name\": \"circular-dependencies\",\n      \"status\": \"pass\",\n      \"message\": \"No circular dependencies\",\n      \"details\": [],\n      \"fixable\": false\n    },\n    {\n      \"name\": \"label-schema\",\n      \"status\": \"pass\",\n      \"message\": \"All label arrays are valid\",\n      \"details\": [],\n      \"fixable\": false\n    },\n    {\n      \"name\": \"extensions-schema\",\n      \"status\": \"pass\",\n      \"message\": \"All extensions fields are valid\",\n      \"details\": [],\n      \"fixable\": false\n    },\n    {\n      \"name\": \"closed-fields-consistency\",\n      \"status\": \"pass\",\n      \"message\": \"All status/close-metadata pairs are consistent\",\n      \"details\": [],\n      \"fixable\": false\n    },\n    {\n      \"name\": \"stale-locks\",\n      \"status\": \"pass\",\n      \"message\": \"No stale lock files\",\n      \"details\": [],\n      \"fixable\": false\n    },\n    {\n      \"name\": \"gitattributes\",\n      \"status\": \"pass\",\n      \"message\": \"Gitattributes configured correctly\",\n      \"details\": [],\n      \"fixable\": false\n    }\n  ],\n  \"summary\": {\n    \"pass\": 11,\n    \"warn\": 1,\n    \"fail\": 0\n  }\n}\n",
+    "stderr": "",
+    "exit": 0
+  },
+  "after": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "{\"id\":\"project-8fc8\",\"title\":\"Feature ticket\",\"status\":\"closed\",\"type\":\"feature\",\"priority\":1,\"createdAt\":\"2026-11-12T03:34:01.854Z\",\"updatedAt\":\"2026-11-12T03:34:04.341Z\",\"labels\":[\"api\",\"core\",\"backend\"],\"blocks\":[\"project-0018\"],\"assignee\":\"parity\",\"closedAt\":\"2026-11-12T03:34:04.341Z\",\"closeReason\":\"done\"}\n{\"id\":\"project-0018\",\"title\":\"Follow-up task\",\"status\":\"open\",\"type\":\"task\",\"priority\":2,\"createdAt\":\"2026-11-12T03:34:02.081Z\",\"updatedAt\":\"2026-11-12T03:34:04.341Z\"}\n",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "ids": {
+    "create_feature": "project-8fc8",
+    "create_followup": "project-0018"
+  },
+  "env": {}
+}

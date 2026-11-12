@@ -1,0 +1,35 @@
+{
+  "name": "completions",
+  "args": [
+    "completions",
+    "bash"
+  ],
+  "input": "",
+  "root": "<CAPTURE_ROOT>",
+  "before": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "{\"id\":\"project-8fc8\",\"title\":\"Feature ticket\",\"status\":\"closed\",\"type\":\"feature\",\"priority\":1,\"createdAt\":\"2026-11-12T03:34:01.854Z\",\"updatedAt\":\"2026-11-12T03:34:04.341Z\",\"labels\":[\"api\",\"core\",\"backend\"],\"blocks\":[\"project-0018\"],\"assignee\":\"parity\",\"closedAt\":\"2026-11-12T03:34:04.341Z\",\"closeReason\":\"done\"}\n{\"id\":\"project-0018\",\"title\":\"Follow-up task\",\"status\":\"open\",\"type\":\"task\",\"priority\":2,\"createdAt\":\"2026-11-12T03:34:02.081Z\",\"updatedAt\":\"2026-11-12T03:34:04.341Z\"}\n",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "result": {
+    "stdout": "# bash completion for luuna-missions\n_luuna_missions_completions() {\n    local cur prev\n    cur=\"${COMP_WORDS[COMP_CWORD]}\"\n    prev=\"${COMP_WORDS[COMP_CWORD-1]}\"\n\n    if [[ ${COMP_CWORD} -eq 1 ]]; then\n        COMPREPLY=( $(compgen -W \"init create show list ready search update close dep label blocked stats sync doctor tpl migrate-from-beads prime onboard upgrade completions block unblock plan config setup guard\" -- \"$cur\") )\n        return 0\n    fi\n\n    case \"${COMP_WORDS[1]}\" in\n        init)\n            COMPREPLY=( $(compgen -W \"--json\" -- \"$cur\") )\n            return 0\n            ;;\n        create)\n            COMPREPLY=( $(compgen -W \"--title --type --priority --assignee --description --desc --body --labels --label --from --intent --json\" -- \"$cur\") )\n            return 0\n            ;;\n        show)\n            COMPREPLY=( $(compgen -W \"--format --json\" -- \"$cur\") )\n            return 0\n            ;;\n        list)\n            COMPREPLY=( $(compgen -W \"--status --type --assignee --all --label --label-any --unlabeled --priority --priority-max --limit --sort --format --json\" -- \"$cur\") )\n            return 0\n            ;;\n        ready)\n            COMPREPLY=( $(compgen -W \"--type --assignee --label --label-any --unlabeled --priority --priority-max --limit --sort --format --json --respect-schedule\" -- \"$cur\") )\n            return 0\n            ;;\n        search)\n            COMPREPLY=( $(compgen -W \"--status --type --assignee --label --label-any --unlabeled --priority --priority-max --limit --sort --format --json\" -- \"$cur\") )\n            return 0\n            ;;\n        update)\n            COMPREPLY=( $(compgen -W \"--status --title --assignee --description --desc --body --type --priority --add-label --remove-label --set-labels --extensions --clear-extensions --claim --as --intent --json\" -- \"$cur\") )\n            return 0\n            ;;\n        close)\n            COMPREPLY=( $(compgen -W \"--reason --json\" -- \"$cur\") )\n            return 0\n            ;;\n        dep)\n            COMPREPLY=( $(compgen -W \"add remove list\" -- \"$cur\") )\n            return 0\n            ;;\n        label)\n            COMPREPLY=( $(compgen -W \"add remove list list-all\" -- \"$cur\") )\n            return 0\n            ;;\n        blocked)\n            COMPREPLY=( $(compgen -W \"--format --json\" -- \"$cur\") )\n            return 0\n            ;;\n        stats)\n            COMPREPLY=( $(compgen -W \"--format --json\" -- \"$cur\") )\n            return 0\n            ;;\n        sync)\n            COMPREPLY=( $(compgen -W \"--status --dry-run --json\" -- \"$cur\") )\n            return 0\n            ;;\n        doctor)\n            COMPREPLY=( $(compgen -W \"--fix --verbose --json\" -- \"$cur\") )\n            return 0\n            ;;\n        tpl)\n            COMPREPLY=( $(compgen -W \"create step list show pour status\" -- \"$cur\") )\n            return 0\n            ;;\n        migrate-from-beads)\n            COMPREPLY=( $(compgen -W \"--json\" -- \"$cur\") )\n            return 0\n            ;;\n        prime)\n            COMPREPLY=( $(compgen -W \"--compact --export --json\" -- \"$cur\") )\n            return 0\n            ;;\n        onboard)\n            COMPREPLY=( $(compgen -W \"--stdout --check --json\" -- \"$cur\") )\n            return 0\n            ;;\n        upgrade)\n            COMPREPLY=( $(compgen -W \"--check --json\" -- \"$cur\") )\n            return 0\n            ;;\n        block)\n            COMPREPLY=( $(compgen -W \"--by --json\" -- \"$cur\") )\n            return 0\n            ;;\n        unblock)\n            COMPREPLY=( $(compgen -W \"--from --all --json\" -- \"$cur\") )\n            return 0\n            ;;\n        plan)\n            COMPREPLY=( $(compgen -W \"templates prompt submit show validate outcome review edit create adopt reorder release list\" -- \"$cur\") )\n            return 0\n            ;;\n        config)\n            COMPREPLY=( $(compgen -W \"schema show set unset\" -- \"$cur\") )\n            return 0\n            ;;\n        setup)\n            COMPREPLY=( $(compgen -W \"--remove --json\" -- \"$cur\") )\n            return 0\n            ;;\n    esac\n}\n\ncomplete -F _luuna_missions_completions luuna-missions lms lm\n\n",
+    "stderr": "",
+    "exit": 0
+  },
+  "after": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "{\"id\":\"project-8fc8\",\"title\":\"Feature ticket\",\"status\":\"closed\",\"type\":\"feature\",\"priority\":1,\"createdAt\":\"2026-11-12T03:34:01.854Z\",\"updatedAt\":\"2026-11-12T03:34:04.341Z\",\"labels\":[\"api\",\"core\",\"backend\"],\"blocks\":[\"project-0018\"],\"assignee\":\"parity\",\"closedAt\":\"2026-11-12T03:34:04.341Z\",\"closeReason\":\"done\"}\n{\"id\":\"project-0018\",\"title\":\"Follow-up task\",\"status\":\"open\",\"type\":\"task\",\"priority\":2,\"createdAt\":\"2026-11-12T03:34:02.081Z\",\"updatedAt\":\"2026-11-12T03:34:04.341Z\"}\n",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "ids": {
+    "create_feature": "project-8fc8",
+    "create_followup": "project-0018"
+  },
+  "env": {}
+}

@@ -45,7 +45,7 @@ func TestIssueRewriteCanRemovePresentOptionalField(t *testing.T) {
 	}
 }
 
-func TestNowISOHasJavaScriptMillisecondShape(t *testing.T) {
+func TestNowISOHasMillisecondShape(t *testing.T) {
 	pattern := regexp.MustCompile(`^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z$`)
 	if got := NowISO(); !pattern.MatchString(got) {
 		t.Fatalf("unexpected timestamp: %s", got)

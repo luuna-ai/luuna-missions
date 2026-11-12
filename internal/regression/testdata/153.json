@@ -1,0 +1,38 @@
+{
+  "name": "create plan seed",
+  "args": [
+    "create",
+    "--title",
+    "Plan seed",
+    "--type",
+    "feature",
+    "--json"
+  ],
+  "input": "",
+  "root": "<CAPTURE_ROOT>",
+  "before": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "result": {
+    "stdout": "{\n  \"success\": true,\n  \"command\": \"create\",\n  \"id\": \"project-5ae7\"\n}\n",
+    "stderr": "",
+    "exit": 0
+  },
+  "after": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "{\"id\":\"project-5ae7\",\"title\":\"Plan seed\",\"status\":\"open\",\"type\":\"feature\",\"priority\":2,\"createdAt\":\"2026-11-12T03:34:30.138Z\",\"updatedAt\":\"2026-11-12T03:34:30.138Z\"}\n",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "ids": {
+    "create_plan_seed": "project-5ae7"
+  },
+  "env": {}
+}

@@ -48,7 +48,7 @@ type Context struct {
 	ExitCode int
 }
 
-// CurrentVersion is overridden from package.json by the native build script.
+// CurrentVersion is the native compatibility version; release builds may override it with -ldflags.
 var CurrentVersion = "0.6.0"
 
 func New() *App {
@@ -110,7 +110,7 @@ func (a *App) context(command string, args []string) *Context {
 }
 
 // JSON writes one indented JSON value and a newline, matching outputJson in
-// the TypeScript CLI. HTML escaping is disabled to match JSON.stringify.
+// the original CLI. HTML escaping is disabled to preserve public JSON output.
 func (c *Context) JSON(value any) error {
 	encoder := json.NewEncoder(c.Stdout)
 	encoder.SetEscapeHTML(false)
@@ -148,7 +148,7 @@ func (a *App) Run(args []string) int {
 			Version  string `json:"version"`
 			Runtime  string `json:"runtime"`
 			Platform string `json:"platform"`
-		}{true, "version", "@luuna/missions-cli", a.Version, "bun", goPlatform()}); err != nil {
+		}{true, "version", "@luuna/missions-cli", a.Version, "go", goPlatform()}); err != nil {
 			return a.outputError(err)
 		}
 		return 0
@@ -340,7 +340,7 @@ func levenshtein(a, b string) int {
 	return prev[len(br)]
 }
 
-// The version JSON platform remains the Node/Bun spelling for compatibility.
+// The version JSON platform remains the established spelling for compatibility.
 func goPlatform() string {
 	osName := runtime.GOOS
 	if osName == "windows" {

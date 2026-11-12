@@ -1,0 +1,36 @@
+{
+  "name": "plan prompt",
+  "args": [
+    "plan",
+    "prompt",
+    "project-5ae7",
+    "--json"
+  ],
+  "input": "",
+  "root": "<CAPTURE_ROOT>",
+  "before": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "{\"id\":\"project-5ae7\",\"title\":\"Plan seed\",\"status\":\"open\",\"type\":\"feature\",\"priority\":2,\"createdAt\":\"2026-11-12T03:34:30.138Z\",\"updatedAt\":\"2026-11-12T03:34:30.138Z\"}\n",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "result": {
+    "stdout": "{\n  \"success\": true,\n  \"command\": \"plan prompt\",\n  \"plan_request\": {\n    \"seed\": \"project-5ae7\",\n    \"template\": \"feature\",\n    \"instructions\": \"Fill every section. Required fields are marked. Use prior_art entries to ground decisions. Reply with JSON shaped { \\\"template\\\": \\\"<name>\\\", \\\"name\\\": \\\"<short label>\\\", \\\"sections\\\": { \\\"<section-name>\\\": <value>, ... } } — drop the plan_request wrapper, and sections in your reply is an object keyed by name (not the array of section metadata above). The top-level `name` field is an optional short human-readable label (e.g. \\\"Schema-driven config editor\\\"); if you omit it, luuna-missions plan submit derives one from the parent seed title. Each step is shaped { title?, type?, priority?, blocks?: number[], labels?: string[], plan_template?, existing_seed? }. In each step, `blocks` lists 1-based step indices that this step blocks (step 1 is the first step, step N is the last); e.g. step 1 with `blocks: [2]` means step 1 must finish before step 2 starts. Leave empty if nothing depends on it. Optional `labels` is an array of non-empty strings applied to the spawned (or adopted) child seed; values are normalized (lowercased, trimmed, deduped) and merged additively on adoption — they never clobber existing labels.\",\n    \"sections\": [\n      {\n        \"name\": \"context\",\n        \"required\": true,\n        \"kind\": \"text\",\n        \"prompt\": \"Why does this work need to happen? What problem or opportunity drives it?\",\n        \"prior_art\": [],\n        \"min_length\": 50\n      },\n      {\n        \"name\": \"approach\",\n        \"required\": true,\n        \"kind\": \"text\",\n        \"prompt\": \"What's the chosen approach, and why this over alternatives?\",\n        \"prior_art\": []\n      },\n      {\n        \"name\": \"alternatives\",\n        \"required\": false,\n        \"kind\": \"list\",\n        \"prompt\": \"What other approaches were considered and rejected?\",\n        \"prior_art\": [],\n        \"item\": {\n          \"name\": {\n            \"required\": true,\n            \"kind\": \"text\",\n            \"prompt\": \"\"\n          },\n          \"rejected_because\": {\n            \"required\": true,\n            \"kind\": \"text\",\n            \"prompt\": \"\"\n          }\n        }\n      },\n      {\n        \"name\": \"steps\",\n        \"required\": true,\n        \"kind\": \"steps\",\n        \"prompt\": \"Decompose into ordered, independent implementation steps. Each becomes a child seed.\",\n        \"prior_art\": [],\n        \"min\": 2\n      },\n      {\n        \"name\": \"risks\",\n        \"required\": false,\n        \"kind\": \"list\",\n        \"prompt\": \"What could go wrong? Known failure modes from prior work are pre-filled when luuna-atlas is available.\",\n        \"prior_art\": [],\n        \"item\": \"text\"\n      },\n      {\n        \"name\": \"acceptance\",\n        \"required\": true,\n        \"kind\": \"list\",\n        \"prompt\": \"Concrete, verifiable conditions for plan completion.\",\n        \"prior_art\": [],\n        \"min\": 1,\n        \"item\": \"text\"\n      }\n    ],\n    \"validation\": {\n      \"all_required_present\": true,\n      \"min_steps\": 2,\n      \"min_acceptance\": 1\n    }\n  }\n}\n",
+    "stderr": "",
+    "exit": 0
+  },
+  "after": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "{\"id\":\"project-5ae7\",\"title\":\"Plan seed\",\"status\":\"open\",\"type\":\"feature\",\"priority\":2,\"createdAt\":\"2026-11-12T03:34:30.138Z\",\"updatedAt\":\"2026-11-12T03:34:30.138Z\"}\n",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "ids": {
+    "create_plan_seed": "project-5ae7"
+  },
+  "env": {}
+}

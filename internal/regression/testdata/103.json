@@ -1,0 +1,37 @@
+{
+  "name": "label missing issue",
+  "args": [
+    "label",
+    "list",
+    "missing-0000",
+    "--json"
+  ],
+  "input": "",
+  "root": "<CAPTURE_ROOT>",
+  "before": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "{\"id\":\"project-30b9\",\"title\":\"Blocker\",\"status\":\"closed\",\"type\":\"task\",\"priority\":2,\"createdAt\":\"2026-11-12T03:34:15.422Z\",\"updatedAt\":\"2026-11-12T03:34:17.821Z\",\"blocks\":[\"project-0c9c\"],\"closedAt\":\"2026-11-12T03:34:17.821Z\"}\n{\"id\":\"project-0c9c\",\"title\":\"Dependent\",\"status\":\"open\",\"type\":\"task\",\"priority\":2,\"createdAt\":\"2026-11-12T03:34:15.639Z\",\"updatedAt\":\"2026-11-12T03:34:19.507Z\",\"labels\":[\"api\"]}\n",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "result": {
+    "stdout": "{\n  \"success\": false,\n  \"command\": \"label\",\n  \"error\": \"Issue not found: missing-0000\"\n}\n",
+    "stderr": "",
+    "exit": 1
+  },
+  "after": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "{\"id\":\"project-30b9\",\"title\":\"Blocker\",\"status\":\"closed\",\"type\":\"task\",\"priority\":2,\"createdAt\":\"2026-11-12T03:34:15.422Z\",\"updatedAt\":\"2026-11-12T03:34:17.821Z\",\"blocks\":[\"project-0c9c\"],\"closedAt\":\"2026-11-12T03:34:17.821Z\"}\n{\"id\":\"project-0c9c\",\"title\":\"Dependent\",\"status\":\"open\",\"type\":\"task\",\"priority\":2,\"createdAt\":\"2026-11-12T03:34:15.639Z\",\"updatedAt\":\"2026-11-12T03:34:19.507Z\",\"labels\":[\"api\"]}\n",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "ids": {
+    "create_feature": "project-30b9",
+    "create_followup": "project-0c9c"
+  },
+  "env": {}
+}

@@ -1,0 +1,37 @@
+{
+  "name": "onboard check installed",
+  "args": [
+    "onboard",
+    "--check",
+    "--json"
+  ],
+  "input": "",
+  "root": "<CAPTURE_ROOT>",
+  "before": {
+    ".claude/settings.json": "{}\n",
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": "",
+    "CLAUDE.md": "<!-- missions:start -->\n## Issue Tracking (Missions)\n<!-- missions-onboard:v0.6.0 -->\n<!-- missions-onboard-schema:8 -->\n\nThis project uses [Missions](https://github.com/luuna-ai/luuna-missions) v0.6.0 (`lm`) for git-native issue tracking. Run `luuna-missions prime` at session start for the workflow and live state (in-progress and ready issues), or run `luuna-missions setup claude` once to do it automatically.\n\n- `luuna-missions ready` — Find unblocked work\n- `luuna-missions update <id> --claim` — Claim work (atomic)\n- `luuna-missions create --title \"...\" [--from <id>]` — File work\n- `luuna-missions close <id>` — Complete work\n- `luuna-missions plan prompt <id>` — Decompose large or ambiguous work\n- `luuna-missions sync` — Commit `.luuna/missions/` changes\n\nNever hand-edit `.luuna/missions/*.jsonl`; `luuna-missions` locks and validates the store.\n<!-- missions:end -->\n"
+  },
+  "result": {
+    "stdout": "{\n  \"success\": true,\n  \"command\": \"onboard\",\n  \"status\": \"current\",\n  \"file\": \"<CAPTURE_ROOT>\\\\CLAUDE.md\"\n}\n",
+    "stderr": "",
+    "exit": 0
+  },
+  "after": {
+    ".claude/settings.json": "{}\n",
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": "",
+    "CLAUDE.md": "<!-- missions:start -->\n## Issue Tracking (Missions)\n<!-- missions-onboard:v0.6.0 -->\n<!-- missions-onboard-schema:8 -->\n\nThis project uses [Missions](https://github.com/luuna-ai/luuna-missions) v0.6.0 (`lm`) for git-native issue tracking. Run `luuna-missions prime` at session start for the workflow and live state (in-progress and ready issues), or run `luuna-missions setup claude` once to do it automatically.\n\n- `luuna-missions ready` — Find unblocked work\n- `luuna-missions update <id> --claim` — Claim work (atomic)\n- `luuna-missions create --title \"...\" [--from <id>]` — File work\n- `luuna-missions close <id>` — Complete work\n- `luuna-missions plan prompt <id>` — Decompose large or ambiguous work\n- `luuna-missions sync` — Commit `.luuna/missions/` changes\n\nNever hand-edit `.luuna/missions/*.jsonl`; `luuna-missions` locks and validates the store.\n<!-- missions:end -->\n"
+  },
+  "ids": {},
+  "env": {}
+}

@@ -10,7 +10,7 @@
 
 The original MIT LICENSE is preserved verbatim. Luuna modifications are also licensed under MIT by Luuna contributors. Original version numbers remain the compatibility baseline; a distinct Luuna release version must be chosen before publication.
 
-Luuna changes include branding, private package metadata, safe installation without Git-hook mutation, current agent guidance, and removal of imported authoring/session records. Storage formats, historical command aliases, exported type names, environment variables, schema fields, and integration markers retain upstream compatibility. No rewrite of the implementation is implied.
+Luuna changes include branding, component metadata, safe installation without Git-hook mutation, current agent guidance, and removal of imported authoring/session records. Storage formats, historical command aliases, exported type names, environment variables, schema fields, and integration markers retain upstream compatibility. The maintained implementation is now Go, with captured public CLI contracts preserving behavior.
 
 This maintained distribution is currently published at https://github.com/luuna-ai/luuna-missions. Luuna consumes it as an exact-commit Git submodule. The package remains private and unpublished. The component-scoped history was extracted with git subtree split; the original pre-branding history remains in the original Luuna core repository at the import source recorded above. See MIGRATION.md.
 

@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-// The legacy CLI writes pino debug records only for top-level exceptions.
+// Structured debug records are written only for top-level exceptions.
 // Explicit LUUNA_MISSIONS_LOG_LEVEL takes precedence over DEBUG=1, and an
 // invalid level falls back to the DEBUG/default rule.
 func resolvedLogLevel() string {

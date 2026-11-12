@@ -1,0 +1,35 @@
+{
+  "name": "search human",
+  "args": [
+    "search",
+    "Core"
+  ],
+  "input": "",
+  "root": "<CAPTURE_ROOT>",
+  "before": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "{\"id\":\"project-5b99\",\"title\":\"Core feature\",\"status\":\"open\",\"type\":\"feature\",\"priority\":1,\"createdAt\":\"2026-11-12T03:34:06.900Z\",\"updatedAt\":\"2026-11-12T03:34:06.900Z\",\"labels\":[\"api\",\"ui\"]}\n{\"id\":\"project-567b\",\"title\":\"Core followup\",\"status\":\"open\",\"type\":\"task\",\"priority\":3,\"createdAt\":\"2026-11-12T03:34:07.115Z\",\"updatedAt\":\"2026-11-12T03:34:07.761Z\"}\n",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "result": {
+    "stdout": "- project-5b99 · Core feature   [High · feature] {api, ui}\n- project-567b · Core followup   [Low · task]\n\n2 match(es)\n",
+    "stderr": "",
+    "exit": 0
+  },
+  "after": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "{\"id\":\"project-5b99\",\"title\":\"Core feature\",\"status\":\"open\",\"type\":\"feature\",\"priority\":1,\"createdAt\":\"2026-11-12T03:34:06.900Z\",\"updatedAt\":\"2026-11-12T03:34:06.900Z\",\"labels\":[\"api\",\"ui\"]}\n{\"id\":\"project-567b\",\"title\":\"Core followup\",\"status\":\"open\",\"type\":\"task\",\"priority\":3,\"createdAt\":\"2026-11-12T03:34:07.115Z\",\"updatedAt\":\"2026-11-12T03:34:07.761Z\"}\n",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "ids": {
+    "create_feature": "project-5b99",
+    "create_followup": "project-567b"
+  },
+  "env": {}
+}

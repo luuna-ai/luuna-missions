@@ -1,55 +1,14 @@
 # Luuna Missions CLI and system map
 
-This is the command, tooling, data, and integration map of the maintained Missions fork. The live CLI implementation is Go: `cmd/luuna-missions/main.go` registers the built-in commands in `internal/cli/` and the plan family in `internal/plan/`. `src/index.ts` is a Bun launcher for the existing package and Luuna entrypoints. `src/index-legacy.ts` plus the TypeScript modules under `src/` remain a differential behavior oracle. This map describes write and Git side effects; reading it does not authorize running those commands in a user's project.
+The sole CLI is Go. `cmd/luuna-missions/main.go` registers handlers from `internal/cli` and `internal/plan`. `internal/model`, `internal/store` and `internal/config` own public records, storage and project discovery. `cmd/dev` provides native build and verification commands.
 
-## Place in Luuna
+Build with `go run ./cmd/dev build`; executables and aliases appear under `dist/`. Arguments, standard streams, signals and exit codes are handled directly by the native executable. Version JSON reports runtime `go`. Platform labels retain their established spellings for compatibility. Embedded help, shell completions and workflow guidance are part of the public contract.
 
-Missions owns Git-native tickets and structured plans. Atlas owns structured expertise and project memory, and Beacon owns reusable prompts. The Luuna runtime owns policy, permissions, and approval enforcement. Missions is a separate public repository consumed by Luuna at an exact submodule commit; it communicates with Luuna through command-line arguments, exit codes, JSON output, and `.luuna/missions/` data. A Missions change does not alter the consuming Luuna checkout until that pin and installer are updated in a separate reviewed integration.
-
-```text
-user / agent / Luuna launcher (`luuna missions`)
-                  |
-                  v
-  package bin: luuna-missions / lms / lm / missions
-                  |
-                  v
-   Bun compatibility launcher (`src/index.ts`)
-                  |
-       cached Go executable (`cmd/luuna-missions`)
-                  |
-        +---------+---------+------------------+
-        |                   |                  |
-  issues + dependencies   plans + templates  config + tooling
-        |                   |                  |
-        +-------------------+------------------+
-                            |
-                   .luuna/missions/ (Git files)
-                            |
-         optional: luuna-atlas query/record; Claude hooks; Git
-```
-
-The package is `@luuna/missions-cli` version 0.6.0 and remains private and unpublished. Its bin entries are `luuna-missions`, `lms`, `lm`, and `missions`, all pointing to `src/index.ts`. The consuming Luuna `components/manifest.json` still pins that Bun path, and its Windows installer writes Bun launchers. These files live in the parent repository. The shim makes that path dispatch to the Go implementation in this checkout; changing this repository alone does not move Luuna's exact submodule pin.
-
-## Runtime, build, and test tooling
-
-The Bun launcher calls `scripts/native-build.ts`, which hashes the package version, `go.mod`, `go.sum`, and all files under `cmd/` and `internal/`, including embedded help, completion, schema, and prompt assets. It builds a matching binary once with `go build -trimpath` and injects the package version into `internal/cli.CurrentVersion`. The binary is stored under ignored `dist/<platform>-<architecture>/<digest>/` and is reused for that source revision. The launcher passes CLI arguments, standard streams, signals, working directory, and exit status to the child. Direct native execution needs no Bun after the binary is built.
-
-| Tool or entry | Role | Requirement / output |
-| --- | --- | --- |
-| `src/index.ts` | Compatibility entry for package bins and Luuna's existing pin | Bun 1.4.3; builds native binary on a cache miss |
-| `scripts/native-build.ts` / `bun run build:native` | Source-keyed native build | Go 1.22+ on `PATH`, or `LUUNA_MISSIONS_GO` set to its executable; writes ignored `dist/` |
-| `cmd/luuna-missions/main.go` | Native entry and command registration | Direct `go run ./cmd/luuna-missions <args>` or compiled binary |
-| `internal/cli`, `internal/plan` | Parser, commands, plan lifecycle, help and completion text | Go runtime implementation; `internal/plan` registers through `cli.App` |
-| `internal/model`, `internal/store`, `internal/config` | Wire records, JSONL/locking/atomic persistence, YAML schema/discovery/migration | Preserve existing project files and public JSON keys |
-| `src/index-legacy.ts`, `src/register-all.ts`, `src/commands/` | Previous TypeScript command implementation | Oracle for command parity; not the package bin implementation |
-| `scripts/parity.mjs` | Differential CLI corpus in isolated temporary Git projects | Compares Go and TypeScript exit codes, stdout/stderr, JSON values, ordered JSONL records, and non-JSON files |
-| `scripts/verify-native.ts` / `bun run verify` | Run Go tests, build native, then run all parity suites after Bun checks | `verify` also runs type checking, instruction checks, and Bun tests |
-
-The Go CLI embeds help snapshots, shell completions, and some `prime` content derived from the TypeScript oracle. Changes to those public strings require updating the Go fixtures and parity cases. `--version --json` deliberately retains `runtime: "bun"` and Node/Bun-style platform names as a wire-compatibility label, even when Go runs directly. `LUUNA_MISSIONS_DEBUG=1` enables a separate diagnostic JSON line on stdout for top-level errors unless a valid `LUUNA_MISSIONS_LOG_LEVEL` overrides it; leave it off when consuming a single JSON response. Go diagnostic stack text is a summary rather than a byte-for-byte Bun stack.
+Missions owns tickets and plans, Atlas expertise, Beacon prompts and Luuna runtime policy. Consumers must update their executable paths and exact component pins in a separate integration.
 
 ## Project data and invariants
 
-`init` creates `.luuna/missions/config.yaml`, `issues.jsonl`, `plans.jsonl`, `templates.jsonl`, and a local `.gitignore` for `*.lock`. It adds three `merge=union` lines for the JSONL files to the project's `.gitattributes`. Commands discover the nearest initialized project by walking up from the current directory; a linked Git worktree resolves its main checkout's store. The first access to a legacy `.seeds/` layout may move it to `.luuna/missions/` through `internal/config/legacy.go` and rewrite relevant `.gitattributes`/`.gitignore` references. That migration refuses to merge two stores or follow a linked old/new directory; `src/legacy-layout.ts` is the reference implementation.
+`init` creates `.luuna/missions/config.yaml`, `issues.jsonl`, `plans.jsonl`, `templates.jsonl`, and a local `.gitignore` for `*.lock`. It adds three `merge=union` lines for the JSONL files to the project's `.gitattributes`. Commands discover the nearest initialized project by walking up from the current directory; a linked Git worktree resolves its main checkout's store. The first access to a legacy `.seeds/` layout may move it to `.luuna/missions/` through `internal/config/legacy.go` and rewrite relevant `.gitattributes`/`.gitignore` references. That migration refuses to merge two stores or follow a linked old/new directory.
 
 | File | Record or purpose | Main owners |
 | --- | --- | --- |
@@ -70,7 +29,7 @@ Options in the table are command-specific. `--json` is available on most data an
 
 | Environment variable | Use |
 | --- | --- |
-| `LUUNA_MISSIONS_GO` | Go executable used by the Bun native builder and native verification script; defaults to `go` on `PATH` |
+| `LUUNA_MISSIONS_GO` | Go executable used by the native developer command and release packaging; defaults to `go` on `PATH` |
 | `LUUNA_MISSIONS_DEBUG=1` | Enables debug records for top-level command errors unless a valid explicit log level takes precedence |
 | `LUUNA_MISSIONS_LOG_LEVEL` | `trace`, `debug`, `info`, `warn`, `error`, `fatal`, or `silent`; controls those error diagnostics |
 | `USER` | Default identity for `update <id> --claim` if `--as` is omitted |
@@ -162,16 +121,6 @@ Atlas enrichment is optional: `plan prompt` can query `luuna-atlas` for matching
 
 ## Development and evidence boundaries
 
-Supported component validation is `bun install --frozen-lockfile --ignore-scripts` followed by `bun run verify`. That script runs `bun run typecheck`, `bun run check:agents`, `bun test --timeout 30000`, `go test ./...`, a native build, and `scripts/parity.mjs --suite all --require-go`. The differential corpus runs the `smoke`, `core`, `relations`, `config`, `templates`, `misc`, and `plans` suites in temporary stores. It normalizes generated IDs, temporary paths, line endings, and timestamp milliseconds; it compares JSON semantically and ordered JSONL records by value while keeping human output, stderr, exit codes, and other files exact. The inherited `check:all` and quality-budget scripts compare against upstream maintenance and are not the supported CI contract. The GitHub workflow declares the supported `verify` surface on Linux and Windows with Bun 1.4.3 and Go from `go.mod`; a configured workflow is not proof of a completed run on every host or Go version.
+Verification uses `go run ./cmd/dev verify`: formatting, static analysis, Go tests, 194 captured compatibility cases and native builds. Cases normalize generated IDs, fixture paths, line endings and millisecond timestamps; JSON values and ordered JSONL records are compared semantically. Other output and files are compared exactly. The corpus covers representative success, failure, mutation and help paths, not every possible input. Optional Atlas tests use a native test executable.
 
-For a focused differential run, use `bun scripts/parity.mjs --go <native-binary> --suite <name|all> --require-go`. The harness also accepts `--self-check` to compare the oracle with itself, `--keep` to retain its temporary fixtures, and `--oracle-entry <path>` or `MISSIONS_ORACLE_ENTRY` to select another TypeScript oracle. `MISSIONS_GO_BIN` and `MISSIONS_BUN_BIN` select executables; these `MISSIONS_*` variables configure the harness, not the public CLI. Never aim a parity run at an imported or live project store.
-
-Current limits matter when operating or integrating this component:
-
-- The package bins still require Bun, and a fresh checkout or package install needs a Go compiler for the first native build. No prebuilt binaries or registry release are shipped here. The cached native executable itself can run without Bun.
-- The TypeScript oracle remains in the repository to check command behavior. The parity corpus covers representative success, failure, mutation, help, and output paths; it cannot prove every input or environment. Debug stack text differs from the Bun stack.
-- `doctor` currently checks malformed and duplicate issue/template JSONL records; it does not perform the same integrity scan of `plans.jsonl`. `plan validate <id>` rechecks a stored plan against its current template, but is not a whole-store repair command.
-- `setup claude` and `guard` cover the registered Claude hook and supported direct edit tool events. They are not Luuna runtime policy or a universal filesystem permission system. Atlas lookups and decision recording require an available `luuna-atlas` executable; Beacon has no direct store integration.
-- Changes in this component do not update the consuming Luuna submodule or installer. An exact pin update, consumer smoke test, and any release or publication need a separate reviewed process. Do not load imported stores, session histories, or upstream skills as Luuna work records for validation.
-
-Sources for this map: `cmd/luuna-missions/main.go`, `internal/cli/`, `internal/plan/`, `internal/model/`, `internal/store/`, `internal/config/`, `scripts/native-build.ts`, `scripts/verify-native.ts`, `scripts/parity.mjs`, `src/index.ts`, `src/index-legacy.ts`, `src/register-all.ts`, `src/types.ts`, `src/commands/`, `README.md`, `MIGRATION.md`, `AGENTS.md`, and the consuming Luuna component manifest and Windows installer.
+CI declares the same surface on Linux, Windows and macOS. Platform claims require actual runner results. Native release artifact checks are separate; see [RELEASING.md](RELEASING.md).

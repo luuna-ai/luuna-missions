@@ -132,7 +132,7 @@ func runPrompt(ctx *cli.Context, args []string) error {
 }
 
 func templateNames(templates map[string]model.PlanTemplate) []string {
-	// Object.keys of the built-ins precedes custom entries in the TypeScript implementation.
+	// Object.keys of the built-ins precedes custom entries in the original implementation.
 	names := []string{}
 	for _, name := range []string{"feature", "bug", "refactor"} {
 		if _, ok := templates[name]; ok {

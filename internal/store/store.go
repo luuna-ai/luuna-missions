@@ -156,7 +156,7 @@ func writeRecords[T any](path string, items []T) error {
 }
 
 // Append preserves existing lines, including malformed ones, exactly as the
-// TypeScript append helpers do. The caller must hold WithLock for this path.
+// original append helpers do. The caller must hold WithLock for this path.
 func appendRecord(path string, item any) error {
 	content, err := os.ReadFile(path)
 	if errors.Is(err, os.ErrNotExist) {

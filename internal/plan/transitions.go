@@ -5,7 +5,7 @@ import (
 	"github.com/luuna-ai/luuna-missions/internal/store"
 )
 
-// ApplyTransitions mirrors src/plan-lifecycle.ts. Its caller holds the plans
+// ApplyTransitions implements plan lifecycle rules. Its caller holds the plans
 // then issues locks and has already persisted the new issue statuses.
 func ApplyTransitions(dir string, issueIDs []string, issues []model.Issue, now string) error {
 	plans, err := store.ReadPlans(dir)

@@ -1,0 +1,35 @@
+{
+  "name": "config invalid depth",
+  "args": [
+    "config",
+    "set",
+    "max_plan_depth",
+    "0",
+    "--json"
+  ],
+  "input": "",
+  "root": "<CAPTURE_ROOT>",
+  "before": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: parity\nversion: \"1\"\nmax_plan_depth: 5\n",
+    ".luuna/missions/issues.jsonl": "",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "result": {
+    "stdout": "{\n  \"success\": false,\n  \"command\": \"config\",\n  \"error\": \"Config validation failed:\\n  max_plan_depth: 'max_plan_depth': minimum (comparison=>=, limit=1)\"\n}\n",
+    "stderr": "",
+    "exit": 1
+  },
+  "after": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: parity\nversion: \"1\"\nmax_plan_depth: 5\n",
+    ".luuna/missions/issues.jsonl": "",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "ids": {},
+  "env": {}
+}

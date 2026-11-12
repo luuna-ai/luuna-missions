@@ -74,7 +74,7 @@ func knownJSONFields(typeOf reflect.Type) map[string]bool {
 	return known
 }
 
-// JSONL readers in the TypeScript CLI parse JSON objects without validating
+// JSONL readers in the original CLI parse JSON objects without validating
 // every known field. Decode fields independently so one malformed optional
 // value does not hide the whole record from commands or doctor diagnostics.
 // The raw value remains in recordState until a command explicitly changes it.
@@ -207,7 +207,7 @@ func (issue Issue) MarshalJSON() ([]byte, error) {
 	return issue.state.merge(current, knownJSONFields(reflect.TypeOf(issueWire{})))
 }
 
-// encoding/json omitempty drops both nil and non-nil empty slices. JavaScript
+// encoding/json omitempty drops both nil and non-nil empty slices. The original encoder
 // distinguishes an omitted property from an explicitly empty array, so retain
 // that distinction for the three optional Issue arrays.
 func marshalIssueWire(issue issueWire) ([]byte, error) {

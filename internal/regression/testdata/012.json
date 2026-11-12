@@ -1,0 +1,18 @@
+{
+  "name": "leading format option",
+  "args": [
+    "--format",
+    "json"
+  ],
+  "input": "",
+  "root": "<CAPTURE_ROOT>",
+  "before": {},
+  "result": {
+    "stdout": "",
+    "stderr": "error: unknown option '--format'\n",
+    "exit": 1
+  },
+  "after": {},
+  "ids": {},
+  "env": {}
+}

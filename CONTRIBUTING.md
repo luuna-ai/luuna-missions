@@ -1,71 +1,9 @@
-# Contributing to Missions
+# Contributing
 
-Thanks for your interest in contributing to Missions! This guide covers everything you need to get started.
+Use Go 1.22+ and Git. Read [AGENTS.md](AGENTS.md) before editing.
 
-## Getting Started
+Run `go mod download`, make a focused change, format it with `gofmt -w`, then run `go run ./cmd/dev verify`. Tests use real temporary files and Git repositories. CLI changes need public-boundary tests, including regression fixture updates where output changes intentionally.
 
-1. **Fork** the repository on GitHub
-2. **Clone** your fork locally:
-   ```bash
-   git clone https://github.com/<your-username>/missions.git
-   cd missions
-   ```
-3. **Install** dependencies:
-   ```bash
-   bun install
-   ```
-4. **Create a branch** for your work:
-   ```bash
-   git checkout -b fix/description-of-change
-   ```
+Preserve record formats, lock order, atomic writes, deduplication, secret redaction, and command contracts. Keep optional Atlas subprocess behavior graceful when Atlas is unavailable. Do not change runtime policy or component pins in the parent project. Do not install Git hooks automatically.
 
-## Branch Naming
-
-Use descriptive branch names with a category prefix:
-
-- `fix/` -- Bug fixes
-- `feat/` -- New features
-- `docs/` -- Documentation changes
-- `refactor/` -- Code refactoring
-- `test/` -- Test additions or fixes
-
-## Build & Test Commands
-
-```bash
-bun test              # Run all tests
-bun run lint          # Biome check
-bun run typecheck     # tsc --noEmit
-```
-
-Always run all three before submitting a PR.
-
-## Coding Conventions
-
-- **Tab indentation** (enforced by Biome)
-- **100 character line width** (enforced by Biome)
-- Strict TypeScript with `noUncheckedIndexedAccess` — always handle possible `undefined`
-- No `any` — use `unknown` and narrow, or define proper types
-- All imports use `.ts` extensions
-- Minimal runtime dependencies (chalk + commander only)
-- Tests use real filesystems (temp dirs via `mkdtemp`), never mocks
-
-## Testing
-
-- **Framework:** `bun test` (built-in, Jest-compatible API)
-- Tests colocated with source: `src/foo.test.ts` next to `src/foo.ts`
-- Use real I/O with temp directories, no mocks
-
-## Pull Request Expectations
-
-- **One concern per PR.** Keep changes focused.
-- **Tests required.** New features and bug fixes should include tests.
-- **Passing CI.** All PRs must pass CI checks before merge.
-- **Description.** Briefly explain what and why. Link relevant issues.
-
-## Reporting Issues
-
-Use [GitHub Issues](https://github.com/luuna-ai/luuna-missions/issues) for bug reports and feature requests. For security vulnerabilities, see [SECURITY.md](SECURITY.md).
-
-## License
-
-By contributing, you agree that your contributions will be licensed under the [MIT License](LICENSE).
+Build with `go run ./cmd/dev build`; native executables and aliases appear in `dist/`. See [docs/RELEASING.md](docs/RELEASING.md) for release artifact checks. Do not commit, push or publish without explicit authorization.

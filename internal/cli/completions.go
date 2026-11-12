@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-// Generated from the TypeScript command registry; include nested command
+// Generated from the command registry; include nested command
 // names and flag descriptions so shell scripts keep their existing contract.
 //
 //go:embed completion_bash.txt

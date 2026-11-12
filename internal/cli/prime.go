@@ -13,9 +13,7 @@ import (
 	"github.com/luuna-ai/luuna-missions/internal/store"
 )
 
-// These templates are generated from the TypeScript `prime --export --json`
-// oracle in a project with and without a package.json verify script. Keeping
-// the content here preserves the public session context while Go takes over.
+// Embedded workflow templates keep human and structured output consistent.
 //
 //go:embed prime_full.json
 var primeFull []byte
@@ -50,18 +48,8 @@ func primeReference(issue model.Issue) primeRef {
 }
 
 func projectHasVerify(root string) bool {
-	content, err := os.ReadFile(filepath.Join(root, "package.json"))
-	if err != nil {
-		return false
-	}
-	var pkg struct {
-		Scripts map[string]any `json:"scripts"`
-	}
-	if json.Unmarshal(content, &pkg) != nil {
-		return false
-	}
-	_, ok := pkg.Scripts["verify"].(string)
-	return ok
+	info, err := os.Stat(filepath.Join(root, "go.mod"))
+	return err == nil && info.Mode().IsRegular()
 }
 
 func primeTemplate(compact, verify bool) (primeFixture, error) {

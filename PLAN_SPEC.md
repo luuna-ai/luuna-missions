@@ -379,7 +379,7 @@ A child seed marked `requires_plan: true` is excluded from `luuna-missions ready
 When `luuna-atlas` is resolvable on PATH, `luuna-missions plan prompt` enriches the prompt JSON with prior art:
 
 1. **Domain inference** — explicit `--domain` flag → seed labels matching declared Luuna Atlas domains → directory anchors derived from `git diff --name-only` against the seed's referenced files.
-2. **Per-section enrichment** — for any section with a `atlas_source: <type>` hint (or for sections matching well-known names: `approach` ↔ pattern + decision; `risks` ↔ failure; `acceptance` ↔ guide), missions shells out to `luuna-atlas query --domain <name> --type <type> --json --limit 5` (or calls the programmatic API exported from `luuna-atlas/src/api.ts`).
+2. **Per-section enrichment** — for any section with a `atlas_source: <type>` hint (or for sections matching well-known names: `approach` ↔ pattern + decision; `risks` ↔ failure; `acceptance` ↔ guide), missions shells out to `luuna-atlas query --domain <name> --type <type> --json --limit 5`.
 3. **Embedding** — top-N records become `prior_art` entries on the section: `[{id, type, summary, relevance}]`. The LLM is instructed to ground its answer in these entries when relevant.
 
 Atlas absent → `prior_art` arrays are empty, validation rules are unaffected, planning still works.
@@ -596,7 +596,7 @@ The default optimizes for autonomous swarms; opt-in rigor for teams that need it
 
 1. **Section schema vs. `custom_types` reuse.** Should `plan_templates` reuse Luuna Atlas's `custom_types` AJV-schema-generation code (extract into a shared package), or maintain a parallel implementation in missions? Sharing reduces drift; keeping them separate keeps missions dependency-free.
 2. **Step ID stability.** `--overwrite` diffing by step title is fragile. Should templates be able to declare stable `step_id` keys that survive title edits, at the cost of more author burden?
-3. **Atlas query interface.** Shell out to `luuna-atlas query --json` (works today, language-agnostic) vs. import from `@luuna/atlas-cli` programmatically (faster, tighter coupling, requires npm dep). Soft coupling argues for the shell route.
+3. **Atlas query interface.** Shell out to `luuna-atlas query --json` (works today, language-agnostic) vs. import from `@luuna/atlas-cli` programmatically (faster, tighter coupling, requires a package dependency). Soft coupling argues for the shell route.
 4. **Default template inference.** Inferring template from seed `type` is convenient but couples the type taxonomy to template names. Should the mapping be configurable, or hard-coded to `task→feature, bug→bug, feature→feature, epic→feature` (with `--template` always overriding)?
 5. **Sub-plan depth.** Recursive nested plans risk runaway decomposition. Should there be a configurable `max_plan_depth` in `config.yaml` (default 3)?
 6. **Children lifecycle when parent plan moves to `done`.** If a plan is marked `done` but children are still open, is that a validation error, a warning, or allowed? Recommend: warning, not error, so plans can be retroactively closed without forcing child cleanup first.

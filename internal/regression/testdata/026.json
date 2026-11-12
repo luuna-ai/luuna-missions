@@ -1,0 +1,35 @@
+{
+  "name": "blocked",
+  "args": [
+    "blocked",
+    "--json"
+  ],
+  "input": "",
+  "root": "<CAPTURE_ROOT>",
+  "before": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "{\"id\":\"project-8fc8\",\"title\":\"Feature ticket\",\"status\":\"open\",\"type\":\"feature\",\"priority\":1,\"createdAt\":\"2026-11-12T03:34:01.854Z\",\"updatedAt\":\"2026-11-12T03:34:02.314Z\",\"labels\":[\"api\",\"core\"],\"blocks\":[\"project-0018\"]}\n{\"id\":\"project-0018\",\"title\":\"Follow-up task\",\"status\":\"open\",\"type\":\"task\",\"priority\":2,\"createdAt\":\"2026-11-12T03:34:02.081Z\",\"updatedAt\":\"2026-11-12T03:34:02.314Z\",\"blockedBy\":[\"project-8fc8\"]}\n",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "result": {
+    "stdout": "{\n  \"success\": true,\n  \"command\": \"blocked\",\n  \"issues\": [\n    {\n      \"id\": \"project-0018\",\n      \"title\": \"Follow-up task\",\n      \"status\": \"open\",\n      \"type\": \"task\",\n      \"priority\": 2,\n      \"createdAt\": \"2026-11-12T03:34:02.081Z\",\n      \"updatedAt\": \"2026-11-12T03:34:02.314Z\",\n      \"blockedBy\": [\n        \"project-8fc8\"\n      ]\n    }\n  ],\n  \"count\": 1\n}\n",
+    "stderr": "",
+    "exit": 0
+  },
+  "after": {
+    ".gitattributes": ".luuna/missions/issues.jsonl merge=union\n.luuna/missions/templates.jsonl merge=union\n.luuna/missions/plans.jsonl merge=union\n",
+    ".luuna/missions/.gitignore": "*.lock\n",
+    ".luuna/missions/config.yaml": "project: \"project\"\nversion: \"1\"\nmax_plan_depth: 3\n",
+    ".luuna/missions/issues.jsonl": "{\"id\":\"project-8fc8\",\"title\":\"Feature ticket\",\"status\":\"open\",\"type\":\"feature\",\"priority\":1,\"createdAt\":\"2026-11-12T03:34:01.854Z\",\"updatedAt\":\"2026-11-12T03:34:02.314Z\",\"labels\":[\"api\",\"core\"],\"blocks\":[\"project-0018\"]}\n{\"id\":\"project-0018\",\"title\":\"Follow-up task\",\"status\":\"open\",\"type\":\"task\",\"priority\":2,\"createdAt\":\"2026-11-12T03:34:02.081Z\",\"updatedAt\":\"2026-11-12T03:34:02.314Z\",\"blockedBy\":[\"project-8fc8\"]}\n",
+    ".luuna/missions/plans.jsonl": "",
+    ".luuna/missions/templates.jsonl": ""
+  },
+  "ids": {
+    "create_feature": "project-8fc8",
+    "create_followup": "project-0018"
+  },
+  "env": {}
+}

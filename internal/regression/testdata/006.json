@@ -1,0 +1,19 @@
+{
+  "name": "format before version",
+  "args": [
+    "--format",
+    "json",
+    "--version"
+  ],
+  "input": "",
+  "root": "<CAPTURE_ROOT>",
+  "before": {},
+  "result": {
+    "stdout": "0.6.0\n",
+    "stderr": "",
+    "exit": 0
+  },
+  "after": {},
+  "ids": {},
+  "env": {}
+}

@@ -34,7 +34,7 @@ func (entry issueWithPlan) MarshalJSON() ([]byte, error) {
 		return nil, fmt.Errorf("issue JSON not an object")
 	}
 	// A stored extension could already use one of these names. Match the
-	// TypeScript object spread by replacing it rather than emitting duplicate keys.
+	// record object spread by replacing it rather than emitting duplicate keys.
 	var existing map[string]json.RawMessage
 	if err := json.Unmarshal(issueJSON, &existing); err != nil {
 		return nil, err
@@ -503,7 +503,7 @@ func scheduledOut(issue model.Issue, now time.Time) bool {
 		value = strings.TrimSpace(value)
 		when, err := time.Parse(time.RFC3339Nano, value)
 		if err != nil {
-			// JavaScript Date.parse interprets ISO date-only values as UTC.
+			// The original date parser interprets ISO date-only values as UTC.
 			when, err = time.Parse(time.DateOnly, value)
 		}
 		if err == nil && when.After(now) {
