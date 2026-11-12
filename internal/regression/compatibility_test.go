@@ -71,6 +71,13 @@ func TestCompatibility(t *testing.T) {
 			if err := os.Mkdir(root, 0755); err != nil {
 				t.Fatal(err)
 			}
+			// Match the canonical working directory reported by the CLI on hosts
+			// whose temporary directory is a symlink (notably macOS /var).
+			canonicalRoot, err := filepath.EvalSymlinks(root)
+			if err != nil {
+				t.Fatal(err)
+			}
+			root = canonicalRoot
 			replaceRoot := func(s string) string {
 				s = strings.ReplaceAll(s, strings.ReplaceAll(f.Root, `\`, `\\`), strings.ReplaceAll(root, `\`, `\\`))
 				s = strings.ReplaceAll(s, strings.ReplaceAll(f.Root, `\`, `/`), filepath.ToSlash(root))
@@ -193,7 +200,7 @@ func TestCompatibility(t *testing.T) {
 			compare("stdout", f.Result.Stdout, stdout.String())
 			compare("stderr", f.Result.Stderr, stderr.String())
 			found := map[string]bool{}
-			err := filepath.WalkDir(root, func(path string, d os.DirEntry, err error) error {
+			err = filepath.WalkDir(root, func(path string, d os.DirEntry, err error) error {
 				if err != nil {
 					return err
 				}
